@@ -89,18 +89,19 @@ public class Ebi {
 
 
 class EnchantmentColorFilter extends RGBImageFilter {
-	  private static int blackColor = Color.black.getRGB();
-		int enchTextColor = new Color(154, 154, 154).getRGB();
-		  public EnchantmentColorFilter() {
-		     canFilterIndexColorModel = false;
-		  }
+	private static int blackColor = Color.black.getRGB();
+	private static int enchTextColor = new Color(154, 154, 154).getRGB();
 
-		  public int filterRGB(int x, int y, int rgb) {
-			  if (rgb == enchTextColor) {
-				  return rgb;
-			  }
-			  else {
-				  return blackColor;
-			  }
-		  }
+	public EnchantmentColorFilter() {
+		canFilterIndexColorModel = false;
+	}
+
+	public int filterRGB(int x, int y, int rgb) {
+		if (rgb == enchTextColor) {
+			return rgb;
 		}
+		else {
+			return blackColor;
+		}
+	}
+}
