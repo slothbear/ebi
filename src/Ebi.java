@@ -46,7 +46,7 @@ public class Ebi {
 		}
 	} // main()
 
-	private static void stowImageFile(int column, int row, BufferedImage popup) throws IOException {
+	private static void stowImageFile(int row, int column, BufferedImage popup) throws IOException {
         String enchFile = "captures/" + (row+1) + "x" + (column+1) + ".png";
         ImageIO.write(popup, "png", new File(enchFile));
 	}
