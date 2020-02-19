@@ -41,17 +41,14 @@ public class Ebi {
 	          robot.mouseMove(bookX, bookY);
 	          TimeUnit.MILLISECONDS.sleep(100);
 	          popup = captureInfoPopup(bookX, bookY, chestColumn);
-	          stowImageFile(bookX, bookY, popup);	          
+	          stowImageFile(chestRow, chestColumn, popup);	          
 	        }
 		}
 	} // main()
 
 	private static void stowImageFile(int column, int row, BufferedImage popup) throws IOException {
-		
         String enchFile = "captures/" + (row+1) + "x" + (column+1) + ".png";
         ImageIO.write(popup, "png", new File(enchFile));
-
-		
 	}
 
 	private static BufferedImage captureInfoPopup(int x, int y, int column) {
