@@ -13,10 +13,10 @@ public class LeguImage {
 	public static void main(String[] args) throws IOException {
 		BufferedImage popup;
 		BufferedImage enchantmentTextImage;
+		
 		String userDir = System.getProperty("user.dir");
 		String fileName = userDir + "/captures/" + CHEST_SLOT + ".png";
 		popup = ImageIO.read(new File(fileName));
-
 		JOptionPane.showMessageDialog(null, 
 				"the full enchanted book information image", 
 				"Ebi",
@@ -26,9 +26,9 @@ public class LeguImage {
 		for (int textRow = 0; textRow < 7; textRow++) {
 			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
 
-			int[] px = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
+			int[] pixels = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
 
-			int count = whitePixelCount(px);
+			int count = whitePixelCount(pixels);
 			System.out.println("white pixels (" + textRow + "):" + count);
 			if (count == 0) {
 				continue;
