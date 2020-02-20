@@ -45,13 +45,11 @@ public class LeguImage {
 
 	}
 
-	private static int whitePixelCount(int[] px) {
+	private static int whitePixelCount(int[] pixels) {
 		final int WHITE_PIXEL = -16777216;
 		int count = 0;
-		for (int xx=0; xx < px.length; xx++ ) {
-			if(px[xx] != WHITE_PIXEL) {
-				count++;
-			}
+		for (int pixel : pixels) {
+			count += (pixel == WHITE_PIXEL) ? 1 : 0;
 		}
 		return count;
 	}
