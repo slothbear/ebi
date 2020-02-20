@@ -63,7 +63,7 @@ public class Ebi {
 	      FilteredImageSource fis = new FilteredImageSource(src.getSource(), colorfilter);
 
 	      Image toolkitImage = Toolkit.getDefaultToolkit().createImage(fis);
-	      BufferedImage bimage = new BufferedImage(toolkitImage.getWidth(null), toolkitImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+	      BufferedImage bimage = new BufferedImage(toolkitImage.getWidth(null), toolkitImage.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
 	      // Draw the image on to the buffered image
 	      Graphics2D bGr = bimage.createGraphics();
