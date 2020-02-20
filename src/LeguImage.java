@@ -16,27 +16,26 @@ public class LeguImage {
 		String userDir = System.getProperty("user.dir");
 		String fileName = userDir + "/captures/" + CHEST_SLOT + ".png";
 		popup = ImageIO.read(new File(fileName));
-		
+
 		JOptionPane.showMessageDialog(null, 
 				"the full enchanted book information image", 
 				"Ebi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
-		
 
 		for (int textRow = 0; textRow < 7; textRow++) {
 			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
 			
 			int count = 0;
 			
-			int[] px = popup.getRGB(0, 35*textRow, 425, 35, null, 0, 425);
+			int[] px = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
 			
 			for (int xx=0; xx < px.length; xx++ ) {
 				if(px[xx] != -16777216) {
 					count++;
 				}
 			}
-	
+
 			System.out.println("white count(" + textRow + "): " + count);
 			if (count == 0) {
 				continue;
@@ -44,7 +43,7 @@ public class LeguImage {
 			
 			JOptionPane.showMessageDialog(null, 
 					"enchantment #" + (textRow+1) +
-						"\nwhite pixels: " + count, 
+						"\nwhite pixels: " + count,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(enchantmentTextImage));
