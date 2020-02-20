@@ -25,16 +25,15 @@ public class LeguImage {
 
 		for (int textRow = 0; textRow < 7; textRow++) {
 			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
-			
-			int[] px = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
-			
-			int count = whitePixelCount(px);
 
-			System.out.println("white count(" + textRow + "): " + count);
+			int[] px = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
+
+			int count = whitePixelCount(px);
+			System.out.println("white pixels (" + textRow + "):" + count);
 			if (count == 0) {
 				continue;
 			}
-			
+
 			JOptionPane.showMessageDialog(null, 
 					"enchantment #" + (textRow+1) +
 						"\nwhite pixels: " + count,
@@ -46,11 +45,12 @@ public class LeguImage {
 	}
 
 	private static int whitePixelCount(int[] pixels) {
-		final int WHITE_PIXEL = -16777216;
+		final int WHITE_PIXEL = -6645094 ;
 		int count = 0;
+		
 		for (int pixel : pixels) {
 			count += (pixel == WHITE_PIXEL) ? 1 : 0;
-		}
+		}		
 		return count;
 	}
 
