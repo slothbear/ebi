@@ -46,7 +46,8 @@ public class LeguImage {
 			ImageIcon icon = new ImageIcon(enchantmentTextImage);
 
 			JOptionPane.showMessageDialog(null, 
-					"very fine enchantment image", 
+					"enchantment #" + (textRow+1) +
+						"\nwhite pixels: " + count, 
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					icon);
