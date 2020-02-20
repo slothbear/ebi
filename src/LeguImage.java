@@ -12,19 +12,36 @@ public class LeguImage {
 		BufferedImage popup;
 		BufferedImage enchantmentTextImage;
 		String userDir = System.getProperty("user.dir");
-		String fileName = userDir + "/captures/1x5.png";
+		String fileName = userDir + "/captures/1x2.png";
 		popup = ImageIO.read(new File(fileName));
-		
+
 		for (int textRow = 0; textRow < 7; textRow++) {
 			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
+			
+			int count = 0;
+			
+			int[] px = popup.getRGB(0, 35*textRow, 425, 35, null, 0, 425);
+			
+			for (int xx=0; xx < px.length; xx++ ) {
+				if(px[xx] != -16777216) {
+					count++;
+				}
+			}
+	
+			System.out.println("white count(" + textRow + "): " + count);
+			if (count == 0) {
+				continue;
+			}
+			
 			ImageIcon icon = new ImageIcon(enchantmentTextImage);
+
 			JOptionPane.showMessageDialog(null, 
 					"very fine enchantment image", 
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					icon);
 		}
-		
+
 	}
 
 }
