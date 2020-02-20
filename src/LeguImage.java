@@ -14,6 +14,16 @@ public class LeguImage {
 		String userDir = System.getProperty("user.dir");
 		String fileName = userDir + "/captures/1x2.png";
 		popup = ImageIO.read(new File(fileName));
+		
+		
+		ImageIcon fullIcon = new ImageIcon(popup);
+
+		JOptionPane.showMessageDialog(null, 
+				"the full enchanted book information image", 
+				"Ebi",
+				JOptionPane.INFORMATION_MESSAGE,
+				fullIcon);
+		
 
 		for (int textRow = 0; textRow < 7; textRow++) {
 			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
