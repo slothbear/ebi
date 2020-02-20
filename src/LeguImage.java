@@ -7,12 +7,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LeguImage {
+	
+	private static final String CHEST_SLOT = "1x1";
 
 	public static void main(String[] args) throws IOException {
 		BufferedImage popup;
 		BufferedImage enchantmentTextImage;
 		String userDir = System.getProperty("user.dir");
-		String fileName = userDir + "/captures/1x2.png";
+		String fileName = userDir + "/captures/" + CHEST_SLOT + ".png";
 		popup = ImageIO.read(new File(fileName));
 		
 		
