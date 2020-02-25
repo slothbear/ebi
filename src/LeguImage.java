@@ -38,15 +38,14 @@ public class LeguImage {
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(enchantmentTextImage));
 		}
-
 	}
 
 	private static int whitePixelCount(int[] pixels) {
-		final int WHITE_PIXEL = -6645094 ;
+		final int TEXT_COLOR = -6645094 ;
 		int count = 0;
 		
 		for (int pixel : pixels) {
-			count += (pixel == WHITE_PIXEL) ? 1 : 0;
+			count += (pixel == TEXT_COLOR) ? 1 : 0;
 		}		
 		return count;
 	}
