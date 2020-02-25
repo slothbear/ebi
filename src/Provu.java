@@ -27,7 +27,7 @@ public class Provu {
 		}
 		System.out.println();
 		
-//		Invalid arguments will terminate the program with an exception.
+//		Invalid arguments will now terminate the program with an exception.
 		for (int rx : range(0, 0)) {
 			System.out.print(rx);
 		}
