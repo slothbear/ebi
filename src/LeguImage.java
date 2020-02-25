@@ -11,9 +11,8 @@ public class LeguImage {
 	private static final String CHEST_SLOT = "1x1";
 
 	public static void main(String[] args) throws IOException {
-		String userDir = System.getProperty("user.dir");
-		String fileName = userDir + "/captures/" + CHEST_SLOT + ".png";
-		popup = ImageIO.read(new File(fileName));
+		String fileName = System.getProperty("user.dir") +
+				"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
 		JOptionPane.showMessageDialog(null, 
 				"the full enchanted book information image", 
@@ -22,7 +21,6 @@ public class LeguImage {
 				new ImageIcon(popup));
 
 		for (int textRow = 0; textRow < 7; textRow++) {
-			enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
 			BufferedImage enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
 
 			int[] pixels = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
