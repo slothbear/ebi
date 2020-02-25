@@ -15,7 +15,7 @@ public class LeguImage {
 				"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
 		JOptionPane.showMessageDialog(null, 
-				"the full enchanted book information image", 
+				"full enchanted book list", 
 				"Ebi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
@@ -33,7 +33,7 @@ public class LeguImage {
 
 			JOptionPane.showMessageDialog(null, 
 					"enchantment #" + (textRow+1) +
-						"\nwhite pixels: " + count,
+						"\npixel count: " + count,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(enchantmentTextImage));
