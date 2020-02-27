@@ -22,11 +22,14 @@ each enchantment. The first time you run Ebi, every enchantment
 is new to the system – but they'll be remembered.
 * Ebi writes the index to a CSV file. Import the file
 into the spreadsheet of your choice.
-* When you need a *Looting III* enchantment, search your spreadsheet.
+* When you need a **Looting III** enchantment, search your spreadsheet.
 There you will find the ID and slot of the chest storing the
-enchantment. For instance "Chest 90210, row 2, column 9".
-* Find that chest and slot, find your enchanted book, celebrate.
+enchantment. For instance
+> chest #9, row 2, column 9
+* Find the chest and slot, find your enchanted book, celebrate.
 * Mark that book as *used*, or remove it from the spreadsheet.
+
+## FAQ
 
 ## other projects
 If you know of similar projects, let me know so I can add them to the list.
