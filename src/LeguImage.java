@@ -25,22 +25,22 @@ public class LeguImage {
 
 			int[] pixels = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
 
-			int count = whitePixelCount(pixels);
-			System.out.println("white pixels (" + textRow + "):" + count);
+			int count = textPixelCount(pixels);
+			System.out.println("text pixels (" + textRow + "):" + count);
 			if (count == 0) {
 				continue;
 			}
 
 			JOptionPane.showMessageDialog(null, 
 					"enchantment #" + (textRow+1) +
-						"\npixel count: " + count,
+						"\ntext pixels: " + count,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(enchantmentTextImage));
 		}
 	}
 
-	private static int whitePixelCount(int[] pixels) {
+	private static int textPixelCount(int[] pixels) {
 		final int TEXT_COLOR = -6645094 ;
 		int count = 0;
 		
