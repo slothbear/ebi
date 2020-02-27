@@ -10,8 +10,10 @@ in some chest? But which chest?
 
 * Fill lots of chests with enchanted books (probably from fishing).
 * Give each chest some kind of identifier. I like banners,
-but you could use signs with 128-bit UUIDs, item frames, or
-an x/y location. ![image of chests with banners](images/banner_chests.png)
+but you could use signs with 128-bit UUIDs, item frames,
+[memorable phrases](https://www.youtube.com/watch?v=NFIGX6EfSSc),
+or
+an x/y location. ![image of chests with banners](images/chest_ids.png)
 * Open chest #1. Run Ebi.
 * Ebi will hover the mouse over each Enchanted Book in the chest, collecting all enchantment names.
 * If any new enchantments are found, you'll be asked to identify each enchantment. The first time you run Ebi, every enchantment is new to the system – but they'll be remembered.
