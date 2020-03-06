@@ -14,8 +14,8 @@ public class LeguImage {
 		String fileName = System.getProperty("user.dir") +
 				"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
-		JOptionPane.showMessageDialog(null, 
-				"full enchanted book list", 
+		JOptionPane.showMessageDialog(null,
+				"full enchanted book list",
 				"Ebi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
@@ -31,7 +31,7 @@ public class LeguImage {
 				continue;
 			}
 
-			JOptionPane.showMessageDialog(null, 
+			JOptionPane.showMessageDialog(null,
 					"enchantment #" + (textRow+1) +
 						"\ntext pixels: " + count,
 					"Ebi",
