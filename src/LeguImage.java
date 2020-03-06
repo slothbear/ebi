@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LeguImage {
-	
+
 	private static final String CHEST_SLOT = "1x1";
 
 	public static void main(String[] args) throws IOException {
@@ -43,10 +43,10 @@ public class LeguImage {
 	private static int textPixelCount(int[] pixels) {
 		final int TEXT_COLOR = -6645094 ;
 		int count = 0;
-		
+
 		for (int pixel : pixels) {
 			count += (pixel == TEXT_COLOR) ? 1 : 0;
-		}		
+		}
 		return count;
 	}
 
