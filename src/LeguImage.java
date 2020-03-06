@@ -31,13 +31,22 @@ public class LeguImage {
 				continue;
 			}
 
+			int column = enchantmentTextImage.getWidth();
+			while (column >= 0 && allBlack(enchantmentTextImage, column)) {
+				column++;
+				}
+
 			JOptionPane.showMessageDialog(null,
 					"enchantment #" + (textRow+1) +
-						"\ntext pixels: " + count,
+						"\ntext pixels: " + count + "\nfirst text: " + column,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
 					new ImageIcon(enchantmentTextImage));
 		}
+	}
+
+	private static boolean allBlack(BufferedImage image, int x) {
+		return false;
 	}
 
 	private static int textPixelCount(int[] pixels) {
