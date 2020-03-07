@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 public class LeguImage {
 	private static final String CHEST_SLOT = "1x1";
+	private static final int MAX_ENCHANTMENTS = 7;
 	private static final int BLACK_COLOR = new Color(0,0,0).getRGB();
 	private static final int TEXT_COLOR = new Color(154,154,154).getRGB();
 
@@ -22,7 +23,7 @@ public class LeguImage {
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
 
-		for (int chunk = 0; chunk < 7; chunk++) {
+		for (int chunk = 0; chunk < MAX_ENCHANTMENTS; chunk++) {
 			BufferedImage enchantmentTextImage = popup.getSubimage(0, 35 * chunk, 425, 35);
 			int[] pixels = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
 			int count = textPixelCount(pixels);
