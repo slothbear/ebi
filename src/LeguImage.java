@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 public class LeguImage {
 
 	private static final String CHEST_SLOT = "1x1";
+	private static final int BLACK_COLOR = new Color(0,0,0).getRGB();
 
 	public static void main(String[] args) throws IOException {
 		String fileName = System.getProperty("user.dir") +
@@ -46,7 +48,12 @@ public class LeguImage {
 	}
 
 	private static boolean allBlack(BufferedImage image, int x) {
-		return false;
+		int[] pixels = image.getRGB(x, 0, 1, 35, null, 0, 1);
+		for (int y = 0; y<34; y++) {
+			if (pixels[y] != BLACK_COLOR)
+			return false;
+		}
+		return true;
 	}
 
 	private static int textPixelCount(int[] pixels) {
