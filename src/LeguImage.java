@@ -31,9 +31,9 @@ public class LeguImage {
 				continue;
 			}
 
-			int column = enchantmentTextImage.getWidth();
+			int column = enchantmentTextImage.getWidth()-1;
 			while (column >= 0 && allBlack(enchantmentTextImage, column)) {
-				column++;
+				column--;
 				}
 
 			JOptionPane.showMessageDialog(null,
