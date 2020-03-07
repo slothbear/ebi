@@ -22,15 +22,12 @@ public class LeguImage {
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
 
-		for (int textRow = 0; textRow < 7; textRow++) {
-			BufferedImage enchantmentTextImage = popup.getSubimage(0, 35 * textRow, 425, 35);
-
+		for (int chunk = 0; chunk < 7; chunk++) {
+			BufferedImage enchantmentTextImage = popup.getSubimage(0, 35 * chunk, 425, 35);
 			int[] pixels = enchantmentTextImage.getRGB(0, 0, 425, 35, null, 0, 425);
-
 			int count = textPixelCount(pixels);
-			System.out.println("text pixels (" + textRow + "):" + count);
 			if (count == 0) {
-				continue;
+				continue; // next chunk
 			}
 
 			int column = enchantmentTextImage.getWidth()-1;
@@ -39,7 +36,7 @@ public class LeguImage {
 				}
 
 			JOptionPane.showMessageDialog(null,
-					"enchantment #" + (textRow+1) +
+					"enchantment #" + (chunk+1) +
 						"\ntext pixels: " + count + "\nfirst text: " + column,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
