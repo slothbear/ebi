@@ -8,9 +8,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LeguImage {
-
 	private static final String CHEST_SLOT = "1x1";
 	private static final int BLACK_COLOR = new Color(0,0,0).getRGB();
+	private static final int TEXT_COLOR = new Color(154,154,154).getRGB();
 
 	public static void main(String[] args) throws IOException {
 		String fileName = System.getProperty("user.dir") +
@@ -57,9 +57,7 @@ public class LeguImage {
 	}
 
 	private static int textPixelCount(int[] pixels) {
-		final int TEXT_COLOR = -6645094 ;
 		int count = 0;
-
 		for (int pixel : pixels) {
 			count += (pixel == TEXT_COLOR) ? 1 : 0;
 		}
