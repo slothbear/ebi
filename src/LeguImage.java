@@ -24,25 +24,25 @@ public class LeguImage {
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
 
-		for (int chunk = 0; chunk < MAX_ENCHANTMENTS; chunk++) {
-			BufferedImage enchantmentTextImage = popup.getSubimage(0, CHUNK_HEIGHT * chunk, CHUNK_WIDTH, CHUNK_HEIGHT);
-			int[] pixels = enchantmentTextImage.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT, null, 0, CHUNK_WIDTH);
+		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
+			BufferedImage chunk = popup.getSubimage(0, CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
+			int[] pixels = chunk.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT, null, 0, CHUNK_WIDTH);
 			int count = textPixelCount(pixels);
 			if (count == 0) {
 				continue; // next chunk
 			}
 
-			int column = enchantmentTextImage.getWidth()-1;
-			while (column >= 0 && allBlack(enchantmentTextImage, column)) {
+			int column = chunk.getWidth()-1;
+			while (column >= 0 && allBlack(chunk, column)) {
 				column--;
 				}
 
 			JOptionPane.showMessageDialog(null,
-					"enchantment #" + (chunk+1) +
+					"enchantment #" + (chunkLine+1) +
 						"\ntext pixels: " + count + "\nfirst text: " + column,
 					"Ebi",
 					JOptionPane.INFORMATION_MESSAGE,
-					new ImageIcon(enchantmentTextImage));
+					new ImageIcon(chunk));
 		}
 	}
 
