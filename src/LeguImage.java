@@ -19,7 +19,7 @@ public class LeguImage {
 		String fileName = System.getProperty("user.dir") +
 				"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
-		showImage(popup);
+		showImage(popup, "full enchanted book list");
 
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
@@ -64,9 +64,9 @@ public class LeguImage {
 		return count;
 	}
 
-	private static void showImage(BufferedImage popup) {
+	private static void showImage(BufferedImage popup, String message) {
 		JOptionPane.showMessageDialog(null,
-				"full enchanted book list", "Ebi",
+				message, "Ebi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
 	}
