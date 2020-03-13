@@ -36,13 +36,9 @@ public class LeguImage {
 				column--;
 			}
 
-			JOptionPane.showMessageDialog(null,
-					"enchantment #" + (chunkLine + 1) +
-							"\ntext pixels: " + count + "\nfirst text: "
-							+ column,
-					"Ebi",
-					JOptionPane.INFORMATION_MESSAGE,
-					new ImageIcon(chunk));
+			showImage(chunk, "enchantment #" + (chunkLine + 1) +
+				"\ntext pixels: " + count +
+				"\nfirst text: " + column);
 		}
 	}
 
