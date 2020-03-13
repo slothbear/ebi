@@ -52,8 +52,9 @@ public class LeguImage {
 	private static boolean allBlack(BufferedImage image, int x) {
 		int[] pixels = image.getRGB(x, 0, 1, CHUNK_HEIGHT, null, 0, 1);
 		for (int y = 0; y < CHUNK_HEIGHT - 1; y++) {
-			if (pixels[y] != BLACK_COLOR)
+			if (pixels[y] != BLACK_COLOR) {
 				return false;
+			}
 		}
 		return true;
 	}
