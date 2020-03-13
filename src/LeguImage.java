@@ -61,9 +61,8 @@ public class LeguImage {
 	}
 
 	private static void showImage(BufferedImage popup, String message) {
-		JOptionPane.showMessageDialog(null,
-			message, "Ebi",
-			JOptionPane.INFORMATION_MESSAGE,
+		JOptionPane.showMessageDialog(null, message,
+			"Ebi", JOptionPane.INFORMATION_MESSAGE,
 			new ImageIcon(popup));
 	}
 
