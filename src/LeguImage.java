@@ -17,15 +17,15 @@ public class LeguImage {
 
 	public static void main(String[] args) throws IOException {
 		String fileName = System.getProperty("user.dir") +
-				"/captures/" + CHEST_SLOT + ".png";
+			"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
 		showImage(popup, "full enchanted book list");
 
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
-					CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
+				CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
 			int[] pixels = chunk.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT,
-					null, 0, CHUNK_WIDTH);
+				null, 0, CHUNK_WIDTH);
 			int count = textPixelCount(pixels);
 			if (count == 0) {
 				continue; // next chunk
@@ -66,9 +66,9 @@ public class LeguImage {
 
 	private static void showImage(BufferedImage popup, String message) {
 		JOptionPane.showMessageDialog(null,
-				message, "Ebi",
-				JOptionPane.INFORMATION_MESSAGE,
-				new ImageIcon(popup));
+			message, "Ebi",
+			JOptionPane.INFORMATION_MESSAGE,
+			new ImageIcon(popup));
 	}
 
 }
