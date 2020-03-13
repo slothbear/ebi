@@ -16,20 +16,20 @@ public class LeguImage {
 	private static final int TEXT_COLOR = new Color(154, 154, 154).getRGB();
 
 	public static void main(String[] args) throws IOException {
-		final String fileName = System.getProperty("user.dir") +
+		String fileName = System.getProperty("user.dir") +
 				"/captures/" + CHEST_SLOT + ".png";
-		final BufferedImage popup = ImageIO.read(new File(fileName));
+		BufferedImage popup = ImageIO.read(new File(fileName));
 		JOptionPane.showMessageDialog(null,
 				"full enchanted book list", "Ebi",
 				JOptionPane.INFORMATION_MESSAGE,
 				new ImageIcon(popup));
 
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
-			final BufferedImage chunk = popup.getSubimage(0,
+			BufferedImage chunk = popup.getSubimage(0,
 					CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
-			final int[] pixels = chunk.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT,
+			int[] pixels = chunk.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT,
 					null, 0, CHUNK_WIDTH);
-			final int count = textPixelCount(pixels);
+			int count = textPixelCount(pixels);
 			if (count == 0) {
 				continue; // next chunk
 			}
@@ -50,7 +50,7 @@ public class LeguImage {
 	}
 
 	private static boolean allBlack(BufferedImage image, int x) {
-		final int[] pixels = image.getRGB(x, 0, 1, CHUNK_HEIGHT, null, 0, 1);
+		int[] pixels = image.getRGB(x, 0, 1, CHUNK_HEIGHT, null, 0, 1);
 		for (int y = 0; y < CHUNK_HEIGHT - 1; y++) {
 			if (pixels[y] != BLACK_COLOR)
 				return false;
@@ -60,7 +60,7 @@ public class LeguImage {
 
 	private static int textPixelCount(int[] pixels) {
 		int count = 0;
-		for (final int pixel : pixels) {
+		for (int pixel : pixels) {
 			count += (pixel == TEXT_COLOR) ? 1 : 0;
 		}
 		return count;
