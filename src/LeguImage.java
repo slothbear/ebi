@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LeguImage {
-	private static final String CHEST_SLOT = "1x1";
+	private static final String CHEST_SLOT = "6x9";
 	private static final int MAX_ENCHANTMENTS = 7;
 	private static final int CHUNK_WIDTH = 425;
 	private static final int CHUNK_HEIGHT = 35;
@@ -34,6 +34,7 @@ public class LeguImage {
 			}
 			colorColumn(chunk, column, Color.green);
 
+			int finalNameColumn = column;
 			int foundBlackColumns = 0;
 			int WORD_SPACE = 18;
 			while (column >= 0 && foundBlackColumns < WORD_SPACE) {
@@ -44,11 +45,16 @@ public class LeguImage {
 					foundBlackColumns = 0;
 				}
 			}
-			colorColumn(chunk, column, Color.red); // last ench name colmn.
+			colorColumn(chunk, column, Color.red);
+			colorColumn(chunk, column + WORD_SPACE - 1, Color.pink);
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + count +
 				"\ncolumn: " + column);
+
+			BufferedImage level = chunk.getSubimage(column + WORD_SPACE, 0,
+				finalNameColumn - column - WORD_SPACE + 1, CHUNK_HEIGHT);
+			showImage(level, "level\ntext pixels: " + textPixelCount(level));
 		}
 	}
 
