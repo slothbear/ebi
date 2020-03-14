@@ -51,6 +51,17 @@ public class LeguImage {
 			BufferedImage level = chunk.getSubimage(column + WORD_SPACE, 0,
 				finalLevelColumn - column - WORD_SPACE + 1, chunk.getHeight());
 			showImage(level, "level\ntext pixels: " + textPixelCount(level));
+
+			column = 0;
+			while (column <= finalLevelColumn - 18 && allBlack(chunk, column)) {
+				column++;
+			}
+			int firstNameColumn = column;
+
+			BufferedImage name = chunk.getSubimage(firstNameColumn, 0,
+				finalLevelColumn - firstNameColumn - 18 - level.getWidth() + 1,
+				chunk.getHeight());
+			showImage(name, "name\ntext pixels: " + textPixelCount(name));
 		}
 	}
 
