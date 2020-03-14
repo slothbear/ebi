@@ -35,10 +35,18 @@ public class LeguImage {
 			while (column >= 0 && allBlack(chunk, column)) {
 				column--;
 			}
+			colorColumn(chunk, column, Color.green);
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + count +
 				"\ncolumn: " + column);
+		}
+	}
+
+	private static void colorColumn(BufferedImage image, int x, Color color) {
+		int rgb = color.getRGB();
+		for (int y = 0; y < CHUNK_HEIGHT; y++) {
+			image.setRGB(x, y, rgb);
 		}
 	}
 
