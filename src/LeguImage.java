@@ -33,7 +33,7 @@ public class LeguImage {
 				column--;
 			}
 
-			int finalNameColumn = column;
+			int finalLevelColumn = column;
 			int foundBlackColumns = 0;
 			int WORD_SPACE = 18;
 			while (column >= 0 && foundBlackColumns < WORD_SPACE) {
@@ -50,7 +50,7 @@ public class LeguImage {
 				"\ncolumn: " + column);
 
 			BufferedImage level = chunk.getSubimage(column + WORD_SPACE, 0,
-				finalNameColumn - column - WORD_SPACE + 1, chunk.getHeight());
+				finalLevelColumn - column - WORD_SPACE + 1, chunk.getHeight());
 			showImage(level, "level\ntext pixels: " + textPixelCount(level));
 		}
 	}
