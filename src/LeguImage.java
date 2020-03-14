@@ -19,7 +19,6 @@ public class LeguImage {
 		String fileName = System.getProperty("user.dir") +
 			"/captures/" + CHEST_SLOT + ".png";
 		BufferedImage popup = ImageIO.read(new File(fileName));
-		showImage(popup, "full enchanted book list");
 
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
@@ -36,6 +35,18 @@ public class LeguImage {
 				column--;
 			}
 			colorColumn(chunk, column, Color.green);
+
+			int foundBlackColumns = 0;
+			int WORD_SPACE = 18;
+			while (column >= 0 && foundBlackColumns < WORD_SPACE) {
+				column--;
+				if (allBlack(chunk, column)) {
+					foundBlackColumns++;
+				} else {
+					foundBlackColumns = 0;
+				}
+			}
+			colorColumn(chunk, column, Color.red); // last ench name colmn.
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + count +
