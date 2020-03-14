@@ -23,9 +23,7 @@ public class LeguImage {
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
 				CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
-			int[] pixels = chunk.getRGB(0, 0, CHUNK_WIDTH, CHUNK_HEIGHT,
-				null, 0, CHUNK_WIDTH);
-			int count = textPixelCount(pixels);
+			int count = textPixelCount(chunk);
 			if (count == 0) {
 				continue; // next chunk
 			}
@@ -71,7 +69,10 @@ public class LeguImage {
 		return true;
 	}
 
-	private static int textPixelCount(int[] pixels) {
+	private static int textPixelCount(BufferedImage image) {
+		int[] pixels = image.getRGB(0, 0, image.getWidth(), image.getHeight(),
+			null, 0, image.getWidth());
+
 		int count = 0;
 		for (int pixel : pixels) {
 			count += (pixel == TEXT_COLOR) ? 1 : 0;
