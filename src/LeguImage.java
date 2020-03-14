@@ -28,6 +28,9 @@ public class LeguImage {
 				continue; // next chunk
 			}
 
+			showImage(chunk, "enchantment #" + (chunkLine + 1) +
+				"\ntext pixels: " + count);
+
 			int column = chunk.getWidth() - 1;
 			while (column >= 0 && allBlack(chunk, column)) {
 				column--;
@@ -44,10 +47,6 @@ public class LeguImage {
 					foundBlackColumns = 0;
 				}
 			}
-
-			showImage(chunk, "enchantment #" + (chunkLine + 1) +
-				"\ntext pixels: " + count +
-				"\ncolumn: " + column);
 
 			BufferedImage level = chunk.getSubimage(column + WORD_SPACE, 0,
 				finalLevelColumn - column - WORD_SPACE + 1, chunk.getHeight());
