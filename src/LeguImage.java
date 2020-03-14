@@ -32,7 +32,6 @@ public class LeguImage {
 			while (column >= 0 && allBlack(chunk, column)) {
 				column--;
 			}
-			colorColumn(chunk, column, Color.green);
 
 			int finalNameColumn = column;
 			int foundBlackColumns = 0;
@@ -45,8 +44,6 @@ public class LeguImage {
 					foundBlackColumns = 0;
 				}
 			}
-			colorColumn(chunk, column, Color.red);
-			colorColumn(chunk, column + WORD_SPACE - 1, Color.pink);
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + count +
