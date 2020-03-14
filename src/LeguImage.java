@@ -38,7 +38,7 @@ public class LeguImage {
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + count +
-				"\nfirst text: " + column);
+				"\ncolumn: " + column);
 		}
 	}
 
