@@ -53,21 +53,23 @@ public class LeguImage {
 				"\ncolumn: " + column);
 
 			BufferedImage level = chunk.getSubimage(column + WORD_SPACE, 0,
-				finalNameColumn - column - WORD_SPACE + 1, CHUNK_HEIGHT);
+				finalNameColumn - column - WORD_SPACE + 1, chunk.getHeight());
 			showImage(level, "level\ntext pixels: " + textPixelCount(level));
 		}
 	}
 
 	private static void colorColumn(BufferedImage image, int x, Color color) {
+		int height = image.getHeight();
 		int rgb = color.getRGB();
-		for (int y = 0; y < CHUNK_HEIGHT; y++) {
+		for (int y = 0; y < height; y++) {
 			image.setRGB(x, y, rgb);
 		}
 	}
 
 	private static boolean allBlack(BufferedImage image, int x) {
-		int[] pixels = image.getRGB(x, 0, 1, CHUNK_HEIGHT, null, 0, 1);
-		for (int y = 0; y < CHUNK_HEIGHT - 1; y++) {
+		int height = image.getHeight();
+		int[] pixels = image.getRGB(x, 0, 1, height, null, 0, 1);
+		for (int y = 0; y < height - 1; y++) {
 			if (pixels[y] != BLACK_COLOR) {
 				return false;
 			}
