@@ -93,8 +93,10 @@ public class Ebi {
 
 
 class EnchantmentColorFilter extends RGBImageFilter {
+	private static final int GRAY_LEVEL = 151;
 	private static int blackColor = Color.black.getRGB();
-	private static int enchTextColor = new Color(154, 154, 154).getRGB();
+	private static int enchTextColor = new Color(
+		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
 
 	public EnchantmentColorFilter() {
 		canFilterIndexColorModel = false;

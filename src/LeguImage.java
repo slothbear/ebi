@@ -13,7 +13,9 @@ public class LeguImage {
 	private static final int CHUNK_WIDTH = 440;
 	private static final int CHUNK_HEIGHT = 35;
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
-	private static final int TEXT_COLOR = new Color(154, 154, 154).getRGB();
+	private static final int GRAY_LEVEL = 151;
+	private static final int TEXT_COLOR = new Color(
+		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
 
 	public static void main(String[] args) throws IOException {
 		String fileName = System.getProperty("user.dir") +
