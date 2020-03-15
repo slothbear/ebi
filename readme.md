@@ -13,7 +13,10 @@ in some chest? But which chest?
 but you could use signs with 128-bit UUIDs, item frames,
 [memorable phrases](https://www.youtube.com/watch?v=NFIGX6EfSSc),
 or
-an x/y location. ![image of chests with banners](images/chest_ids.png)
+an x/y location. You could name your chests on an anvil,
+but that ID is not visible until you open the chest. Or name an item
+(via the anvil) you place in an item frame. That's visible on hover.
+![image of chests with banners](images/chest_ids.png)
 * Open a chest. Run Ebi.
 * Ebi will hover the mouse over each Enchanted Book in the chest,
 collecting all enchantment names.
