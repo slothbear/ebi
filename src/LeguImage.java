@@ -31,7 +31,7 @@ public class LeguImage {
 			}
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
-				"\ntext pixels: " + count);
+				"\ntext pixels: " + chunkPixelCount);
 
 			int column = chunk.getWidth() - 1;
 			while (column >= 0 && allBlack(chunk, column)) {
