@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class Ebi {
-
+	private static final int CHUNK_WIDTH = 440;
 	private static Robot robot;
 
 	public static void main(String[] args)
@@ -82,10 +82,10 @@ public class Ebi {
 		Rectangle popupRect;
 		if (column == 8) {
 			// Details pop up to the *left* of the cursor.
-			popupRect = new Rectangle(x - 515, y - 5, 425, 245);
+			popupRect = new Rectangle(x - 515, y - 5, CHUNK_WIDTH, 245);
 		} else {
 			// Details pop up to the right of the cursor.
-			popupRect = new Rectangle(x + 35, y - 5, 425, 245);
+			popupRect = new Rectangle(x + 35, y - 5, CHUNK_WIDTH, 245);
 		}
 		return popupRect;
 	}

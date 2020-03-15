@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class LeguImage {
 	private static final String CHEST_SLOT = "6x9";
 	private static final int MAX_ENCHANTMENTS = 7;
-	private static final int CHUNK_WIDTH = 425;
+	private static final int CHUNK_WIDTH = 440;
 	private static final int CHUNK_HEIGHT = 35;
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int TEXT_COLOR = new Color(154, 154, 154).getRGB();
