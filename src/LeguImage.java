@@ -25,8 +25,8 @@ public class LeguImage {
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
 				CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
-			int count = textPixelCount(chunk);
-			if (count == 0) {
+			int chunkPixelCount = textPixelCount(chunk);
+			if (chunkPixelCount < 100) {
 				continue; // next chunk
 			}
 
