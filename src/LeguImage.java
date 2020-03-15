@@ -12,6 +12,8 @@ public class LeguImage {
 	private static final int MAX_ENCHANTMENTS = 7;
 	private static final int CHUNK_WIDTH = 440;
 	private static final int CHUNK_HEIGHT = 35;
+	private static final int MIN_TEXT_PIXELS = 100;
+
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int GRAY_LEVEL = 151;
 	private static final int TEXT_COLOR = new Color(
@@ -26,7 +28,7 @@ public class LeguImage {
 			BufferedImage chunk = popup.getSubimage(0,
 				CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
 			int chunkPixelCount = textPixelCount(chunk);
-			if (chunkPixelCount < 100) {
+			if (chunkPixelCount < MIN_TEXT_PIXELS) {
 				continue; // next chunk
 			}
 
