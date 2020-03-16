@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -9,6 +11,7 @@ import javax.swing.JOptionPane;
 
 public class split_image {
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
+	private static final int WORD_SPACE = 18;
 
 	public static void main(String[] args) throws IOException {
 
@@ -18,7 +21,11 @@ public class split_image {
 
 		BufferedImage chunk = strip(image);
 		showImage(chunk, "stripped");
-		BufferedImage[] pieces = split(chunk);
+		List<BufferedImage> pieces = split(chunk);
+
+		for (BufferedImage piece : pieces) {
+			showImage(piece, "");
+		}
 
 		BufferedImage name = null;
 		BufferedImage level = null;
@@ -49,9 +56,38 @@ public class split_image {
 		return false;
 	}
 
-	private static BufferedImage[] split(BufferedImage chunk) {
+	private static List<BufferedImage> split(BufferedImage chunk) {
+		int column = 0;
+		int foundBlackColumns = 0;
+		int startOfPiece = 0;
 
-		return null;
+		int width = chunk.getWidth();
+		List<BufferedImage> pieces = new ArrayList<BufferedImage>();
+
+		while (column < width) {
+			if (allBlack(chunk, column)) {
+				foundBlackColumns++;
+			} else {
+				foundBlackColumns = 0;
+			}
+
+			if (foundBlackColumns == WORD_SPACE) {
+				pieces.add(
+					getPiece(chunk, startOfPiece, column - WORD_SPACE + 1));
+				foundBlackColumns = 0;
+				startOfPiece = column + 1;
+			}
+			column++;
+		}
+		pieces.add(getPiece(chunk, startOfPiece, column));
+
+		return pieces;
+	}
+
+	private static BufferedImage getPiece(BufferedImage chunk,
+		int start, int end) {
+		return chunk.getSubimage(start, 0,
+			end - start, chunk.getHeight());
 	}
 
 	private static BufferedImage strip(BufferedImage chunk) {
