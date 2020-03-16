@@ -1,7 +1,7 @@
 
 
 
-whole_line = "    Depth  Strider  III"
+enchantment = "    Depth  Strider  III"
 chunk = whole_line.strip                     # "Depth  Strider  III"
 pieces = chunk.split(WORD_SPACE).            # ["Depth", "Strider", "III"]
 
