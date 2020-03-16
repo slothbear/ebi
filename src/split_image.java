@@ -118,10 +118,10 @@ public class split_image {
 		return true;
 	}
 
-	private static void showImage(BufferedImage popup, String message) {
+	private static void showImage(BufferedImage image, String message) {
 		JOptionPane.showMessageDialog(null, message,
 			"Ebi", JOptionPane.INFORMATION_MESSAGE,
-			new ImageIcon(popup));
+			new ImageIcon(image));
 	}
 
 }
