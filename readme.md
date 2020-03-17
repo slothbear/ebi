@@ -6,6 +6,10 @@ in some chest? But which chest?
 **E**nchanted **B**ook **I**ndex solves your problem.
 **yay**
 
+If you don't play Minecraft but want an idea of who Ebi works,
+check out the
+[non-technical overview](https://github.com/slothbear/ebi/wiki/non-technical-overview).
+
 ## overview
 
 * Fill lots of chests with enchanted books (probably from fishing).
