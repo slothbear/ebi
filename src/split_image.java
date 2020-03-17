@@ -37,9 +37,7 @@ public class split_image {
 
 		if (isLevel(lastPiece)) {
 			level = lastPiece;
-			List<BufferedImage> allButLast = pieces.subList(0,
-				pieces.size() - 1);
-//			name = (BufferedImage)	 join(allButLast);
+			name = join(allButLast(pieces));
 		} else {
 //			level = null;
 //			name = (BufferedImage) join(pieces);
@@ -47,7 +45,11 @@ public class split_image {
 
 	}
 
-	private static Object join(BufferedImage[] copyOfRange) {
+	private static List<BufferedImage> allButLast(List<BufferedImage> pieces) {
+		return pieces.subList(0, pieces.size() - 1);
+	}
+
+	private static BufferedImage join(List<BufferedImage> list) {
 
 		return null;
 	}
