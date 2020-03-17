@@ -31,16 +31,18 @@ public class split_image {
 		BufferedImage image = ImageIO.read(new File(fileName));
 
 		BufferedImage chunk = strip(image);
-
 		List<BufferedImage> pieces = split(chunk);
 		BufferedImage lastPiece = pieces.get(pieces.size() - 1);
 
 		if (isLevel(lastPiece)) {
 			level = lastPiece;
 			name = join(allButLast(pieces));
+			showImage(name, "name");
+			showImage(level, "level");
 		} else {
-//			level = null;
-//			name = (BufferedImage) join(pieces);
+			level = null;
+			name = join(pieces);
+			showImage(name, "name has no level");
 		}
 
 	}
@@ -49,9 +51,12 @@ public class split_image {
 		return pieces.subList(0, pieces.size() - 1);
 	}
 
-	private static BufferedImage join(List<BufferedImage> list) {
-
-		return null;
+	private static BufferedImage join(List<BufferedImage> pieces) {
+		if (pieces.size() == 1) {
+			return pieces.get(0);
+		} else {
+			return pieces.get(0); // TODO: placeholder until we join images.
+		}
 	}
 
 	private static boolean isLevel(BufferedImage piece) {
