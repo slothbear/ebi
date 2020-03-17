@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -10,8 +11,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class split_image {
-	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int WORD_SPACE = 18;
+	private static final Integer[] LEVEL_PIXELS = { 114, 228, 342, 249, 135 };
+	private static final List<Integer> LEVEL_SIZES = Arrays
+		.asList(LEVEL_PIXELS);
+
+	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
+	private static final int GRAY_LEVEL = 151;
+	private static final int TEXT_COLOR = new Color(
+		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
+
 
 	public static void main(String[] args) throws IOException {
 
@@ -21,20 +30,21 @@ public class split_image {
 
 		BufferedImage chunk = strip(image);
 		showImage(chunk, "stripped");
+
 		List<BufferedImage> pieces = split(chunk);
-
 		BufferedImage lastPiece = pieces.get(pieces.size() - 1);
-		showImage(lastPiece, "last piece");
 
-//		if (isLevel(lastPiece)) {
+		if (isLevel(lastPiece)) {
+			showImage(lastPiece, "is a level");
 //			level = lastPiece;
 //			BufferedImage[] allButLast = Arrays.copyOfRange(pieces, 0,
 //				pieces.length - 1);
 //			name = (BufferedImage) join(allButLast);
-//		} else {
+		} else {
+			showImage(lastPiece, "——  NOT LEVEL  ——");
 //			level = null;
 //			name = (BufferedImage) join(pieces);
-//		}
+		}
 //
 //		System.out.println(name);
 //		System.out.println(level);
@@ -46,9 +56,10 @@ public class split_image {
 		return null;
 	}
 
-	private static boolean isLevel(BufferedImage lastPiece) {
-
-		return false;
+	private static boolean isLevel(BufferedImage piece) {
+		int pixelCount = textPixelCount(piece);
+		showImage(piece, "pixels: " + pixelCount);
+		return LEVEL_SIZES.indexOf(pixelCount) != -1;
 	}
 
 	private static List<BufferedImage> split(BufferedImage chunk) {
@@ -112,6 +123,18 @@ public class split_image {
 		}
 		return true;
 	}
+
+	private static int textPixelCount(BufferedImage image) {
+		int[] pixels = image.getRGB(0, 0, image.getWidth(), image.getHeight(),
+			null, 0, image.getWidth());
+
+		int count = 0;
+		for (int pixel : pixels) {
+			count += (pixel == TEXT_COLOR) ? 1 : 0;
+		}
+		return count;
+	}
+
 
 	private static void showImage(BufferedImage image, String message) {
 		JOptionPane.showMessageDialog(null, message,
