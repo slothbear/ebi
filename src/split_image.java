@@ -32,7 +32,7 @@ public class split_image {
 
 		BufferedImage chunk = strip(image);
 		List<BufferedImage> pieces = split(chunk);
-		BufferedImage lastPiece = pieces.get(pieces.size() - 1);
+		BufferedImage lastPiece = last(pieces);
 
 		if (isLevel(lastPiece)) {
 			level = lastPiece;
@@ -45,6 +45,10 @@ public class split_image {
 			showImage(name, "name has no level");
 		}
 
+	}
+
+	private static BufferedImage last(List<BufferedImage> pieces) {
+		return pieces.get(pieces.size() - 1);
 	}
 
 	private static List<BufferedImage> allButLast(List<BufferedImage> pieces) {
