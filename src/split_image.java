@@ -23,14 +23,9 @@ public class split_image {
 		showImage(chunk, "stripped");
 		List<BufferedImage> pieces = split(chunk);
 
-		for (BufferedImage piece : pieces) {
-			showImage(piece, "");
-		}
+		BufferedImage lastPiece = pieces.get(pieces.size() - 1);
+		showImage(lastPiece, "last piece");
 
-		BufferedImage name = null;
-		BufferedImage level = null;
-
-//		BufferedImage lastPiece = pieces[pieces.length - 1];
 //		if (isLevel(lastPiece)) {
 //			level = lastPiece;
 //			BufferedImage[] allButLast = Arrays.copyOfRange(pieces, 0,
