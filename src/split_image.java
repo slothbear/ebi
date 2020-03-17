@@ -23,6 +23,8 @@ public class split_image {
 
 
 	public static void main(String[] args) throws IOException {
+		BufferedImage name = null;
+		BufferedImage level = null;
 
 		String fileName = System.getProperty("user.dir") +
 			"/captures/single_chunk.png";
@@ -36,18 +38,15 @@ public class split_image {
 
 		if (isLevel(lastPiece)) {
 			showImage(lastPiece, "is a level");
-//			level = lastPiece;
-//			BufferedImage[] allButLast = Arrays.copyOfRange(pieces, 0,
-//				pieces.length - 1);
-//			name = (BufferedImage) join(allButLast);
+			level = lastPiece;
+			List<BufferedImage> allButLast = pieces.subList(0,
+				pieces.size() - 1);
+//			name = (BufferedImage)	 join(allButLast);
 		} else {
 			showImage(lastPiece, "——  NOT LEVEL  ——");
 //			level = null;
 //			name = (BufferedImage) join(pieces);
 		}
-//
-//		System.out.println(name);
-//		System.out.println(level);
 
 	}
 
