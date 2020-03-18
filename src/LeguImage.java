@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LeguImage {
-	private static final String CHEST_SLOT = "6x9";
+	private static final String CHEST_SLOT = "4x2";
 	private static final int MAX_ENCHANTMENTS = 7;
 	private static final int CHUNK_WIDTH = 440;
 	private static final int CHUNK_HEIGHT = 35;
@@ -34,6 +34,8 @@ public class LeguImage {
 
 			showImage(chunk, "enchantment #" + (chunkLine + 1) +
 				"\ntext pixels: " + chunkPixelCount);
+			ImageIO.write(chunk, "png",
+				new File("single_chunk" + (chunkLine + 1) + ".png"));
 
 			int column = chunk.getWidth() - 1;
 			while (column >= 0 && allBlack(chunk, column)) {
