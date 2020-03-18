@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 public class split_image {
-	private static final int WORD_SPACE = 18;
 	private static final Map<Integer, Integer> LEVEL_PIXELS;
 	static {
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -23,6 +22,7 @@ public class split_image {
 		LEVEL_PIXELS = Collections.unmodifiableMap(map);
 	}
 
+	private static final int WORD_SPACE = 18;
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int GRAY_LEVEL = 151;
 	private static final int TEXT_COLOR = new Color(
