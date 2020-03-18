@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
 
 public class split_image {
 	private static final int WORD_SPACE = 18;
-	private static final Integer[] LEVEL_PIXELS = { 114, 228, 342, 249, 135 };
-	private static final List<Integer> LEVEL_SIZES = Arrays
-		.asList(LEVEL_PIXELS);
+	private static final List<Integer> LEVEL_PIXELS = Arrays.asList(
+		0, 114, 228, 342, 249, 135);
 
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int GRAY_LEVEL = 151;
