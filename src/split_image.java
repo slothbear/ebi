@@ -21,7 +21,7 @@ public class split_image {
 
 	public static void main(String[] args) throws IOException {
 		int namePixels = 0;
-		int level = -2;
+		int level = 0;
 
 		String fileName = System.getProperty("user.dir") +
 			"/captures/single_chunk.png";
