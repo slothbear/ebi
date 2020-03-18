@@ -3,15 +3,25 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 public class split_image {
 	private static final int WORD_SPACE = 18;
-	private static final List<Integer> LEVEL_PIXELS = Arrays.asList(
-		0, 114, 228, 342, 249, 135);
+	private static final Map<Integer, Integer> LEVEL_PIXELS;
+	static {
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		map.put(114, 1);
+		map.put(228, 2);
+		map.put(342, 3);
+		map.put(249, 4);
+		map.put(135, 5);
+		LEVEL_PIXELS = Collections.unmodifiableMap(map);
+	}
 
 	private static final int BLACK_COLOR = new Color(0, 0, 0).getRGB();
 	private static final int GRAY_LEVEL = 151;
@@ -20,21 +30,21 @@ public class split_image {
 
 
 	public static void main(String[] args) throws IOException {
-		int namePixels = 0;
-		int level = 0;
-
 		String fileName = System.getProperty("user.dir") +
 			"/captures/single_chunk.png";
 		BufferedImage image = ImageIO.read(new File(fileName));
 
 		BufferedImage chunk = strip(image);
 		List<BufferedImage> pieces = split(chunk);
-
 		int lastPixelCount = textPixelCount(last(pieces));
-		level = LEVEL_PIXELS.indexOf(lastPixelCount);
 
-		if (level == -1) {
-			level = 0;
+		int namePixels = 0;
+		int level = 0;
+
+		// Call containsKey() first because get() cannot return an
+		// autoboxed Integer/int that is null.
+		if (LEVEL_PIXELS.containsKey(lastPixelCount)) {
+			level = LEVEL_PIXELS.get(lastPixelCount);
 			namePixels = textPixelCount(allButLast(pieces));
 		} else {
 			namePixels = textPixelCount(chunk);
@@ -42,7 +52,6 @@ public class split_image {
 
 		System.out.println("namePixels: " + namePixels);
 		System.out.println("level: " + level);
-
 	}
 
 	private static BufferedImage last(List<BufferedImage> pieces) {
