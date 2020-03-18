@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class split_image {
 	private static final int WORD_SPACE = 18;
@@ -22,8 +20,8 @@ public class split_image {
 
 
 	public static void main(String[] args) throws IOException {
-		BufferedImage name = null;
-		BufferedImage level = null;
+		int namePixels = 0;
+		int level = -2;
 
 		String fileName = System.getProperty("user.dir") +
 			"/captures/single_chunk.png";
@@ -31,18 +29,19 @@ public class split_image {
 
 		BufferedImage chunk = strip(image);
 		List<BufferedImage> pieces = split(chunk);
-		BufferedImage lastPiece = last(pieces);
 
-		if (isLevel(lastPiece)) {
-			level = lastPiece;
-			name = join(allButLast(pieces));
-			showImage(name, "name");
-			showImage(level, "level");
+		int lastPixelCount = textPixelCount(last(pieces));
+		level = LEVEL_PIXELS.indexOf(lastPixelCount);
+
+		if (level == -1) {
+			level = 0;
+			namePixels = textPixelCount(allButLast(pieces));
 		} else {
-			level = null;
-			name = join(pieces);
-			showImage(name, "name has no level");
+			namePixels = textPixelCount(chunk);
 		}
+
+		System.out.println("namePixels: " + namePixels);
+		System.out.println("level: " + level);
 
 	}
 
@@ -52,19 +51,6 @@ public class split_image {
 
 	private static List<BufferedImage> allButLast(List<BufferedImage> pieces) {
 		return pieces.subList(0, pieces.size() - 1);
-	}
-
-	private static BufferedImage join(List<BufferedImage> pieces) {
-		if (pieces.size() == 1) {
-			return pieces.get(0);
-		} else {
-			return pieces.get(0); // TODO: placeholder until we join images.
-		}
-	}
-
-	private static boolean isLevel(BufferedImage piece) {
-		int pixelCount = textPixelCount(piece);
-		return LEVEL_SIZES.indexOf(pixelCount) != -1;
 	}
 
 	private static List<BufferedImage> split(BufferedImage chunk) {
@@ -140,11 +126,12 @@ public class split_image {
 		return count;
 	}
 
-
-	private static void showImage(BufferedImage image, String message) {
-		JOptionPane.showMessageDialog(null, message,
-			"Ebi", JOptionPane.INFORMATION_MESSAGE,
-			new ImageIcon(image));
+	private static int textPixelCount(List<BufferedImage> pieces) {
+		int count = 0;
+		for (BufferedImage piece : pieces) {
+			count += textPixelCount(piece);
+		}
+		return count;
 	}
 
 }

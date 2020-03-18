@@ -71,6 +71,7 @@ public class LeguImage {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void colorColumn(BufferedImage image, int x, Color color) {
 		int height = image.getHeight();
 		int rgb = color.getRGB();
