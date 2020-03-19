@@ -13,6 +13,7 @@ check out the
 ## overview
 
 * Fill lots of chests with enchanted books (probably from fishing).
+
 <img src="images/large_chest.png"
   alt="large chest filled with enchanted books" width="256">
 * Give each chest some kind of identifier. I like banners,
@@ -22,6 +23,7 @@ or
 an x/y location. You could name your chests on an anvil,
 but that ID is not visible until you open the chest. Or name an item
 (via the anvil) you place in an item frame. That's visible on hover.
+
 <img src="images/chest_ids.png"
   alt="chests with IDs on signs and item frames" width="256">
 * Open a chest. Run Ebi.
