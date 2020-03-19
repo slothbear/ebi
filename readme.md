@@ -43,11 +43,11 @@ enchantment. For instance
 
 ## FAQ
 
-##### What do I need to use Ebi?
+#### What do I need to use Ebi?
 Java 8. Ebi was developed using Java 8, though does not use any
 Java 8 features that I know of.
 
-##### Can you run Ebi for me?
+#### Can you run Ebi for me?
 Maybe, especially during the beta program. If you cannot run
 the program (and can give me access to your Minecraft server)
 
