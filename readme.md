@@ -48,8 +48,8 @@ Java 8. Ebi was developed using Java 8, though does not use any
 Java 8 features that I know of.
 
 #### Can you run Ebi for me?
-Maybe, especially during the beta program. If you cannot run
-the program (and can give me access to your Minecraft server)
+Maybe during the beta program, if you can give me
+access to your Minecraft server.
 
 ## other projects
 If you know of similar projects, let me know so I can add them to the list.
