@@ -98,6 +98,7 @@ public class EbiSpike {
 
 
 class EnchantmentColorFilter extends RGBImageFilter {
+	@SuppressWarnings("unused")
 	private static final int PICKAXE_GRAY_LEVEL = 151; // Minecraft 15.2
 	private static final int AXEPICK_GRAY_LEVEL = 154; // Minecraft 13.2
 	private static final int GRAY_LEVEL = AXEPICK_GRAY_LEVEL;
