@@ -33,13 +33,9 @@ public class Ebi {
 //		Give human time to rearrange chest UI for capture.
 		TimeUnit.SECONDS.sleep(10);
 
-//		Capture book enchantments moving from bottom to top,
-//		right to left. This cursor movement doesn't interfere with
-//		redrawing the item information popup.
-
-		for (int chestRow = 5; chestRow > -1; chestRow--) {
+		for (int chestRow = 0; chestRow < 6; chestRow++) {
 			int bookY = 155 + (chestRow * 64);
-			for (int chestColumn = 8; chestColumn > -1; chestColumn--) {
+			for (int chestColumn = 0; chestColumn < 9; chestColumn++) {
 				int bookX = 470 + (chestColumn * 64);
 				robot.mouseMove(bookX, bookY);
 				TimeUnit.MILLISECONDS.sleep(100);
