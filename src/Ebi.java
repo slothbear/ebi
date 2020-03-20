@@ -38,10 +38,12 @@ public class Ebi {
 
 	}
 
-	private static BufferedImage captureInfoPopup(int bookX, int bookY,
-		boolean lastColumn) throws InterruptedException {
-		ROBOT.mouseMove(bookX, bookY);
+	private static BufferedImage captureInfoPopup(int x, int y,
+		boolean lastColumn) throws InterruptedException, IOException {
+
+		ROBOT.mouseMove(x, y);
 		TimeUnit.MILLISECONDS.sleep(100);
+		return getPopupImage(getPopupRect(x, y, lastColumn));
 
 		return null;
 	}
