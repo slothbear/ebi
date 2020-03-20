@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class Ebi {
+public class EbiSpike {
 	private static final int CHUNK_WIDTH = 440;
 	private static Robot robot;
 
