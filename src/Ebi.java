@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -46,7 +47,8 @@ public class Ebi {
 				stowImageFile(chestRow, chestColumn, popup);
 			}
 		}
-	} // main()
+		robot.keyPress(KeyEvent.VK_ESCAPE);
+	}
 
 	private static void stowImageFile(int row, int column, BufferedImage popup)
 		throws IOException {
