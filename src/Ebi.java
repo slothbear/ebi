@@ -1,7 +1,13 @@
 import java.awt.AWTException;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.FilteredImageSource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +18,7 @@ public class Ebi {
 	private static Robot ROBOT;
 
 	public static void main(String[] args)
-		throws AWTException, InterruptedException {
+		throws AWTException, InterruptedException, IOException {
 
 		ROBOT = new Robot();
 		List<Enchantment> enchantments = new ArrayList<Enchantment>();
@@ -44,8 +50,30 @@ public class Ebi {
 		ROBOT.mouseMove(x, y);
 		TimeUnit.MILLISECONDS.sleep(100);
 		return getPopupImage(getPopupRect(x, y, lastColumn));
+	}
 
-		return null;
+	private static BufferedImage getPopupImage(Rectangle popupRect)
+		throws IOException {
+		BufferedImage src = ROBOT.createScreenCapture(popupRect);
+		FilteredImageSource fis = new FilteredImageSource(
+			src.getSource(), new EnchantmentColorFilter());
+
+		Image toolkitImage = Toolkit.getDefaultToolkit().createImage(fis);
+		BufferedImage bimage = new BufferedImage(toolkitImage.getWidth(null),
+			toolkitImage.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+		// Draw the image on to the buffered image
+		Graphics2D bGr = bimage.createGraphics();
+		bGr.drawImage(toolkitImage, 0, 0, null);
+		bGr.dispose();
+
+		return bimage;
+	}
+
+	private static Rectangle getPopupRect(int x, int y, boolean lastColumn) {
+		final int CHUNK_WIDTH = 440;
+		int popupX = lastColumn ? x - 515 : x + 35;
+		return new Rectangle(popupX, y - 5, CHUNK_WIDTH, 245);
 	}
 
 	private static List<Enchantment> getEnchantments(
