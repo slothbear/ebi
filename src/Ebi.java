@@ -39,7 +39,7 @@ public class Ebi {
 				int bookX = 470 + (chestColumn * 64);
 				robot.mouseMove(bookX, bookY);
 				TimeUnit.MILLISECONDS.sleep(100);
-				popup = captureInfoPopup(bookX, bookY, chestColumn);
+				popup = captureInfoPopup(bookX, bookY, chestColumn == 8);
 				stowImageFile(chestRow, chestColumn, popup);
 			}
 		}
@@ -52,9 +52,10 @@ public class Ebi {
 		ImageIO.write(popup, "png", new File(enchFile));
 	}
 
-	private static BufferedImage captureInfoPopup(int x, int y, int column)
+	private static BufferedImage captureInfoPopup(int x, int y,
+		boolean lastColumn)
 		throws IOException {
-		Rectangle popupRect = getPopupRect(x, y, column);
+		Rectangle popupRect = getPopupRect(x, y, lastColumn);
 		BufferedImage popup = getPopupImage(popupRect);
 		return popup;
 	}
@@ -82,9 +83,9 @@ public class Ebi {
 		return bimage;
 	}
 
-	private static Rectangle getPopupRect(int x, int y, int column) {
+	private static Rectangle getPopupRect(int x, int y, boolean lastColumn) {
 		Rectangle popupRect;
-		if (column == 8) {
+		if (lastColumn) {
 			// Details pop up to the *left* of the cursor.
 			popupRect = new Rectangle(x - 515, y - 5, CHUNK_WIDTH, 245);
 		} else {
