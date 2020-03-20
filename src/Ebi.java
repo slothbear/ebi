@@ -30,7 +30,7 @@ public class Ebi {
 				BufferedImage popup = captureInfoPopup(bookX, bookY,
 					chestColumn == 8);
 				enchantments.addAll(getEnchantments(
-					chestID, popup, chestRow, chestColumn));
+					popup, chestID, chestRow, chestColumn));
 			}
 		}
 		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
@@ -46,8 +46,8 @@ public class Ebi {
 		return null;
 	}
 
-	private static List<Enchantment> getEnchantments(String chestID,
-		BufferedImage popup, int row, int column) {
+	private static List<Enchantment> getEnchantments(
+		BufferedImage popup, String chestID, int row, int column) {
 
 		return new ArrayList<Enchantment>();
 	}
