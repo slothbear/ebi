@@ -1,12 +1,55 @@
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JOptionPane;
 
 public class Ebi {
+	private static Robot ROBOT;
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+		throws AWTException, InterruptedException {
+
+		ROBOT = new Robot();
+		List<Enchantment> enchantments = new ArrayList<Enchantment>();
+
 		String chestID = getChestID();
 		if (chestID.isEmpty()) {
 			return;
 		}
+		TimeUnit.SECONDS.sleep(10); // Wait for human to arrange UI.
+
+		for (int chestRow = 0; chestRow < 6; chestRow++) {
+			int bookY = 155 + (chestRow * 64);
+			for (int chestColumn = 0; chestColumn < 9; chestColumn++) {
+				int bookX = 470 + (chestColumn * 64);
+				BufferedImage popup = captureInfoPopup(bookX, bookY,
+					chestColumn == 8);
+				enchantments.addAll(getEnchantments(
+					chestID, popup, chestRow, chestColumn));
+			}
+		}
+		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
+		System.out.println(enchantments);
+
+	}
+
+	private static BufferedImage captureInfoPopup(int bookX, int bookY,
+		boolean lastColumn) throws InterruptedException {
+		ROBOT.mouseMove(bookX, bookY);
+		TimeUnit.MILLISECONDS.sleep(100);
+
+		return null;
+	}
+
+	private static List<Enchantment> getEnchantments(String chestID,
+		BufferedImage popup, int row, int column) {
+
+		return new ArrayList<Enchantment>();
 	}
 
 	private static String getChestID() {
