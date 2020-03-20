@@ -52,14 +52,20 @@ public class Ebi {
 		ImageIO.write(popup, "png", new File(enchFile));
 	}
 
-	private static BufferedImage captureInfoPopup(int x, int y, int column) {
+	private static BufferedImage captureInfoPopup(int x, int y, int column)
+		throws IOException {
 		Rectangle popupRect = getPopupRect(x, y, column);
 		BufferedImage popup = getPopupImage(popupRect);
 		return popup;
 	}
 
-	private static BufferedImage getPopupImage(Rectangle popupRect) {
+	private static BufferedImage getPopupImage(Rectangle popupRect)
+		throws IOException {
 		BufferedImage src = robot.createScreenCapture(popupRect);
+
+		String popupFile = "captures/popup.png";
+		ImageIO.write(src, "png", new File(popupFile));
+
 		ImageFilter colorfilter = new EnchantmentColorFilter();
 		FilteredImageSource fis = new FilteredImageSource(src.getSource(),
 			colorfilter);
