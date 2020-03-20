@@ -67,7 +67,7 @@ public class EbiSpike {
 		String popupFile = "captures/popup.png";
 		ImageIO.write(src, "png", new File(popupFile));
 
-		ImageFilter colorfilter = new EnchantmentColorFilter();
+		ImageFilter colorfilter = new LocalEnchantmentColorFilter();
 		FilteredImageSource fis = new FilteredImageSource(src.getSource(),
 			colorfilter);
 
@@ -97,7 +97,7 @@ public class EbiSpike {
 }
 
 
-class EnchantmentColorFilter extends RGBImageFilter {
+class LocalEnchantmentColorFilter extends RGBImageFilter {
 	@SuppressWarnings("unused")
 	private static final int PICKAXE_GRAY_LEVEL = 151; // Minecraft 15.2
 	private static final int AXEPICK_GRAY_LEVEL = 154; // Minecraft 13.2
@@ -106,7 +106,7 @@ class EnchantmentColorFilter extends RGBImageFilter {
 	private static int enchTextColor = new Color(
 		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
 
-	public EnchantmentColorFilter() {
+	public LocalEnchantmentColorFilter() {
 		canFilterIndexColorModel = false;
 	}
 
