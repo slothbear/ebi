@@ -35,13 +35,14 @@ public class Ebi {
 				int bookX = 470 + (chestColumn * 64);
 				BufferedImage popup = captureInfoPopup(bookX, bookY,
 					chestColumn == 8);
-				enchantments.addAll(getEnchantments(
-					popup, chestID, chestRow, chestColumn));
+				enchantments.addAll(
+					Chunker.getEnchantments(popup, chestID,
+						chestRow, chestColumn));
 			}
 		}
 		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
-		System.out.println(enchantments);
 
+		System.out.println(enchantments);
 	}
 
 	private static BufferedImage captureInfoPopup(int x, int y,
@@ -76,17 +77,11 @@ public class Ebi {
 		return new Rectangle(popupX, y - 5, CHUNK_WIDTH, 245);
 	}
 
-	private static List<Enchantment> getEnchantments(
-		BufferedImage popup, String chestID, int row, int column) {
-
-		return new ArrayList<Enchantment>();
-	}
-
 	private static String getChestID() {
 		String id = JOptionPane.showInputDialog(null,
 			"Enter the chest ID to associate with these enchantments.\n" +
 				"You have 10 seconds after pressing OK to open your " +
-				"Large Chest in full screen.",
+				"Large Chest of Enchanted Books in full screen.",
 			"Ebi",
 			JOptionPane.INFORMATION_MESSAGE);
 		if (id == null) {
