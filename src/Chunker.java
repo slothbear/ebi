@@ -31,12 +31,14 @@ public class Chunker {
 
 	private static final int PICKAXE_GRAY_LEVEL = 151; // Minecraft 15.2
 	private static final int AXEPICK_GRAY_LEVEL = 154; // Minecraft 13.2
-	private static final int GRAY_LEVEL = AXEPICK_GRAY_LEVEL;
+	private static final int GRAY_LEVEL = PICKAXE_GRAY_LEVEL;
 	private static final int TEXT_COLOR = new Color(
 		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
 
 	public static List<Enchantment> getEnchantments(
 		BufferedImage popup, String chestID, int chestRow, int chestColumn) {
+
+		List<Enchantment> result = new ArrayList<Enchantment>();
 
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
@@ -63,14 +65,11 @@ public class Chunker {
 				namePixels = textPixelCount(chunk);
 			}
 
-			System.out.println("namePixels: " + namePixels);
-			System.out.println("level: " + level);
+			result.add(new Enchantment(namePixels, level, chestID, chestRow,
+				chestColumn));
 		}
 
-		Enchantment e = new Enchantment();
-		List<Enchantment> l = new ArrayList<Enchantment>();
-		l.add(e);
-		return l;
+		return result;
 	}
 
 	private static BufferedImage strip(BufferedImage chunk) {
