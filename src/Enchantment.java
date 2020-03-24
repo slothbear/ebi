@@ -15,6 +15,12 @@ public class Enchantment {
 		this.chestID = chestID;
 		this.row = row;
 		this.column = column;
+
+		if (namePixels == 891) {
+			name = "Baking";
+		} else {
+			name = "unknown";
+		}
 	}
 
 	@Override
