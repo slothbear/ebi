@@ -7,20 +7,22 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 public class ChunkerTest {
-	private static final String CHEST_SLOT = "4x2";
+//	private static final String CHEST_SLOT = "4x2";
 
 	public static void main(String[] args) throws IOException {
 		BufferedImage popup;
 		List<Enchantment> enchantments;
 
-		String fileName = System.getProperty("user.dir") +
-			"/captures/" + CHEST_SLOT + ".png";
-		popup = ImageIO.read(new File(fileName));
-		enchantments = Chunker.getEnchantments(popup, "unu", 4, 2);
-		for (Enchantment e : enchantments) {
-			System.out.println(e);
-		}
+// Read a single popup.
+//		String fileName = System.getProperty("user.dir") +
+//			"/captures/" + CHEST_SLOT + ".png";
+//		popup = ImageIO.read(new File(fileName));
+//		enchantments = Chunker.getEnchantments(popup, "unu", 4, 2);
+//		for (Enchantment e : enchantments) {
+//			System.out.println(e);
+//		}
 
+// Read all the .png in a folder.
 		File folder = new File(System.getProperty("user.dir") +
 			"/captures/");
 		File[] pngs = folder.listFiles(new FileFilter() {
@@ -32,7 +34,9 @@ public class ChunkerTest {
 		});
 		for (File png : pngs) {
 			popup = ImageIO.read(png);
-			enchantments = Chunker.getEnchantments(popup, "du", 4, 2);
+			enchantments = Chunker.getEnchantments(popup, "du", 0, 0);
+
+			Distiller.distill(enchantments);
 			for (Enchantment e : enchantments) {
 				System.out.println(e);
 			}

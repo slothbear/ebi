@@ -42,7 +42,7 @@ public class Ebi {
 		}
 		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
-		System.out.println(enchantments);
+		Distiller.distill(enchantments);
 	}
 
 	private static BufferedImage captureInfoPopup(int x, int y,
