@@ -1,26 +1,23 @@
-public class Enchantment {
-	String name;
-	int namePixels;
-	int level;
-	String chestID;
-	int row;
-	int column;
+import java.awt.image.BufferedImage;
 
+public class Enchantment {
+	String name = "";
+	int namePixels = 0;
+	int level = 0;
+	String chestID = "";
+	int row = 0;
+	int column = 0;
+	BufferedImage image;
 
 	public Enchantment(int namePixels, int level,
-		String chestID, int row, int column) {
+		String chestID, int row, int column, BufferedImage image) {
 
 		this.namePixels = namePixels;
 		this.level = level;
 		this.chestID = chestID;
 		this.row = row;
 		this.column = column;
-
-		if (namePixels == 891) {
-			name = "Baking";
-		} else {
-			name = "unknown";
-		}
+		this.image = image;
 	}
 
 	@Override

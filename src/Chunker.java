@@ -66,7 +66,7 @@ public class Chunker {
 			}
 
 			result.add(new Enchantment(namePixels, level, chestID, chestRow,
-				chestColumn));
+				chestColumn, chunk));
 		}
 
 		return result;
