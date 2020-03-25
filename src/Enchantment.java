@@ -22,11 +22,9 @@ public class Enchantment {
 
 	@Override
 	public String toString() {
-		return "Enchantment [name=" + name + ", namePixels=" + namePixels
-			+ ", level=" + level + ", chestID=" + chestID + ", row=" + row
-			+ ", column=" + column + "]";
+		return "Enchantment [name + " "
+			+ level + "  location=" + chestID + "/" + row + "x"
+			+ column + "]";
 	}
-
-
 
 }
