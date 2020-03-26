@@ -1,4 +1,9 @@
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.imageio.ImageIO;
 
 public class Enchantment {
 	String name = "";
@@ -8,9 +13,13 @@ public class Enchantment {
 	int row = 0;
 	int column = 0;
 	BufferedImage image;
+	String id = "";
+
+	private static AtomicInteger unique = new AtomicInteger();
 
 	public Enchantment(int namePixels, int level,
-		String chestID, int row, int column, BufferedImage image) {
+		String chestID, int row, int column, BufferedImage image)
+		throws IOException {
 
 		this.namePixels = namePixels;
 		this.level = level;
@@ -18,6 +27,14 @@ public class Enchantment {
 		this.row = row;
 		this.column = column;
 		this.image = image;
+		this.id = String.valueOf(unique.getAndIncrement());
+
+		ImageIO.write(image, "png",
+			new File(
+				"captures/" + chestID + "-" + row + "x" + column + "-" + id
+					+ ".png"));
+	}
+
 	}
 
 	@Override

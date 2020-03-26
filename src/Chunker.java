@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,7 +37,8 @@ public class Chunker {
 		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
 
 	public static List<Enchantment> getEnchantments(
-		BufferedImage popup, String chestID, int chestRow, int chestColumn) {
+		BufferedImage popup, String chestID, int chestRow, int chestColumn)
+		throws IOException {
 
 		List<Enchantment> result = new ArrayList<Enchantment>();
 

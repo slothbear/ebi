@@ -29,14 +29,21 @@ public class ChunkerTest {
 			@Override
 			public boolean accept(File file) {
 				return file.isFile()
-					&& file.getName().toLowerCase().endsWith(".png");
+					&& file.getName().toLowerCase().endsWith(".png")
+					&& file.getName().length() == 7;
 			}
 		});
+
 		for (File png : pngs) {
+			String fileName = png.getName();
+			int row = Integer.parseInt(fileName.substring(0, 1));
+			int column = Integer.parseInt(fileName.substring(2, 3));
+
 			popup = ImageIO.read(png);
-			enchantments = Chunker.getEnchantments(popup, "du", 0, 0);
+			enchantments = Chunker.getEnchantments(popup, "Sid", row, column);
 
 			Distiller.distill(enchantments);
+
 			for (Enchantment e : enchantments) {
 				System.out.println(e);
 			}
