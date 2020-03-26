@@ -11,7 +11,7 @@ public class ChunkerTest {
 
 	public static void main(String[] args) throws IOException {
 		BufferedImage popup;
-		List<Enchantment> enchantments;
+		List<Enchantment> enchantments = new ArrayList<Enchantment>();
 
 // Read a single popup.
 //		String fileName = System.getProperty("user.dir") +
@@ -40,13 +40,14 @@ public class ChunkerTest {
 			int column = Integer.parseInt(fileName.substring(2, 3));
 
 			popup = ImageIO.read(png);
-			enchantments = Chunker.getEnchantments(popup, "Sid", row, column);
+			enchantments.addAll(
+				Chunker.getEnchantments(popup, "Sid",
+					row, column));
+		}
+		Distiller.distill(enchantments);
 
-			Distiller.distill(enchantments);
-
-			for (Enchantment e : enchantments) {
-				System.out.println(e.getTableRow());
-			}
+		for (Enchantment e : enchantments) {
+			System.out.println(e.getTableRow());
 		}
 	}
 }
