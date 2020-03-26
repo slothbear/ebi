@@ -74,6 +74,12 @@ public class Distiller {
 					options.toArray(),
 					options.get(0));
 
+				if (choice == null || choice.isEmpty()) {
+					JOptionPane.showMessageDialog(null,
+						"Quitting: CANCEL or nothing selected");
+					System.exit(12);
+				}
+
 				enchantment.name = choice;
 				pixelMap.put(enchantment.namePixels, choice);
 			}
