@@ -35,7 +35,6 @@ public class Enchantment {
 					+ ".png"));
 	}
 
-	}
 
 	@Override
 	public String toString() {
@@ -57,6 +56,44 @@ public class Enchantment {
 		sb.append("  <td>" + column + "</td>\n");
 		sb.append("</tr>\n");
 		return sb.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + level;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + namePixels;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Enchantment other = (Enchantment) obj;
+		if (level != other.level) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (namePixels != other.namePixels) {
+			return false;
+		}
+		return true;
 	}
 
 }
