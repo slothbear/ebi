@@ -1,11 +1,13 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
@@ -55,6 +57,25 @@ public class ChunkerTest {
 		for (Enchantment e : dedup) {
 			System.out.println(e.getTableRow());
 		}
+
+		writeProperties(Distiller.pixelMap);
+	}
+
+	private static void writeProperties(Map<Integer, String> pixelMap)
+		throws IOException {
+		Properties props = new Properties();
+
+		for (Map.Entry<Integer, String> entry : pixelMap.entrySet()) {
+			String key = entry.getKey().toString();
+			props.setProperty(key, entry.getValue());
+			System.out.println(
+				"Key = " + entry.getKey() + ", Value = " + entry.getValue());
+		}
+
+		FileOutputStream out = new FileOutputStream("ebi.properties");
+		props.store(out, "Ebi: Enchanted Book index");
+		out.close();
+
 	}
 
 	public static <T> List<T> removeDuplicates(List<T> list) {
