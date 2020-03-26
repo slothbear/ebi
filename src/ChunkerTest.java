@@ -68,8 +68,6 @@ public class ChunkerTest {
 		for (Map.Entry<Integer, String> entry : pixelMap.entrySet()) {
 			String key = entry.getKey().toString();
 			props.setProperty(key, entry.getValue());
-			System.out.println(
-				"Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		}
 
 		FileOutputStream out = new FileOutputStream("ebi.properties");
