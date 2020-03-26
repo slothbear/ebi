@@ -46,8 +46,8 @@ public class Enchantment {
 	public String getTableRow() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>\n");
-		sb.append("  <td>" + name + "</td>\n");
 		sb.append("  <td>" + level + "</td>\n");
+		sb.append("  <td>" + name + "</td>\n");
 		sb.append(
 			"  <td><img src='" + "captures/Sid-" + row + "x" + column + "-" + id
 				+ ".png'</img>\n");
