@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 public class Distiller {
-	private static Map<Integer, String> pixelMap = new HashMap<Integer, String>();
+	static Map<Integer, String> pixelMap = new HashMap<Integer, String>();
 	private static List<String> options = new ArrayList<String>();
 	static {
 		options.add("Aqua Afifinity");
