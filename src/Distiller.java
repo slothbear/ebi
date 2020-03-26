@@ -1,9 +1,12 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -55,8 +58,10 @@ public class Distiller {
 		options.add("Unbreaking");
 	}
 
-	public static void distill(List<Enchantment> enchantments) {
+	public static void distill(List<Enchantment> enchantments)
+		throws IOException {
 		setDialogOptions();
+		loadProperties();
 
 		for (Enchantment enchantment : enchantments) {
 			if (!enchantment.name.isEmpty()) {
@@ -83,6 +88,19 @@ public class Distiller {
 				enchantment.name = choice;
 				pixelMap.put(enchantment.namePixels, choice);
 			}
+		}
+	}
+
+	private static void loadProperties() throws IOException {
+		FileInputStream in = new FileInputStream("ebi.properties");
+		Properties props = new Properties();
+		props.load(in);
+		in.close();
+
+		for (Object keyO : props.keySet()) {
+			String key = (String) keyO;
+			String value = props.getProperty(key);
+			pixelMap.put(Integer.parseInt(key), value);
 		}
 	}
 
