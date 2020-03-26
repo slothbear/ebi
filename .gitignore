@@ -1,6 +1,9 @@
 # screen captures
 captures
 
+# vim swap
+*.swp
+
 # Compiled class file
 *.class
 
