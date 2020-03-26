@@ -45,7 +45,7 @@ public class ChunkerTest {
 			Distiller.distill(enchantments);
 
 			for (Enchantment e : enchantments) {
-				System.out.println(e);
+				System.out.println(e.getTableRow());
 			}
 		}
 	}

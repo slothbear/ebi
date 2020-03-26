@@ -44,4 +44,19 @@ public class Enchantment {
 			+ column + "]";
 	}
 
+	public String getTableRow() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<tr>\n");
+		sb.append("  <td>" + name + "</td>\n");
+		sb.append("  <td>" + level + "</td>\n");
+		sb.append(
+			"  <td><img src='" + "captures/Sid-" + row + "x" + column + "-" + id
+				+ ".png'</img>\n");
+		sb.append("  <td>" + namePixels + "</td>\n");
+		sb.append("  <td>" + row + "</td>\n");
+		sb.append("  <td>" + column + "</td>\n");
+		sb.append("</tr>\n");
+		return sb.toString();
+	}
+
 }
