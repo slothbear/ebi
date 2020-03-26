@@ -3,7 +3,10 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 
@@ -47,8 +50,19 @@ public class ChunkerTest {
 		}
 		Distiller.distill(enchantments);
 
-		for (Enchantment e : enchantments) {
+		List<Enchantment> dedup = removeDuplicates(enchantments);
+
+		for (Enchantment e : dedup) {
 			System.out.println(e.getTableRow());
 		}
 	}
+
+	public static <T> List<T> removeDuplicates(List<T> list) {
+		Set<T> set = new LinkedHashSet<>();
+		set.addAll(list);
+		list.clear();
+		list.addAll(set);
+		return list;
+	}
+
 }
