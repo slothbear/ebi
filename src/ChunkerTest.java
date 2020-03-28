@@ -55,7 +55,7 @@ public class ChunkerTest {
 		List<Enchantment> dedup = removeDuplicates(enchantments);
 
 		for (Enchantment e : dedup) {
-			System.out.println(e.getTableRow());
+			System.out.println(e.toHTMLrow());
 		}
 
 		writeProperties(Distiller.pixelMap);
