@@ -1,5 +1,6 @@
-# screen captures
-captures
+# screen captures, csv, html, output
+popups
+chunks
 
 # vim swap
 *.swp
