@@ -7,11 +7,13 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class Ebi {
@@ -35,6 +37,7 @@ public class Ebi {
 				int bookX = 470 + (chestColumn * 64);
 				BufferedImage popup = captureInfoPopup(bookX, bookY,
 					chestColumn == 8);
+				stowImageFile(chestRow, chestColumn, popup);
 				enchantments.addAll(
 					Chunker.getEnchantments(popup, chestID,
 						chestRow, chestColumn));
@@ -44,6 +47,14 @@ public class Ebi {
 
 		Distiller.distill(enchantments);
 	}
+
+	private static void stowImageFile(int row, int column, BufferedImage popup)
+		throws IOException {
+		String enchFile = "captures/" + (row + 1) + "x" + (column + 1) + ".png";
+		ImageIO.write(popup, "png", new File(enchFile));
+	}
+
+
 
 	private static BufferedImage captureInfoPopup(int x, int y,
 		boolean lastColumn) throws InterruptedException, IOException {
