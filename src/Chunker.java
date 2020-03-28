@@ -19,6 +19,7 @@ public class Chunker {
 		map.put(342, 3);
 		map.put(237, 4);
 		map.put(249, 4);
+		map.put(123, 5);
 		map.put(135, 5);
 		LEVEL_PIXELS = Collections.unmodifiableMap(map);
 	}
