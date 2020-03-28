@@ -14,13 +14,15 @@ public class Enchantment {
 	int column = 0;
 	BufferedImage image;
 	String id = "";
+	int nameWidth = 0;
 
 	private static AtomicInteger unique = new AtomicInteger();
 
 	public Enchantment(int namePixels, int level,
-		String chestID, int row, int column, BufferedImage image)
+		String chestID, int row, int column, BufferedImage image, int nameWidth)
 		throws IOException {
 
+		this.nameWidth = nameWidth;
 		this.namePixels = namePixels;
 		this.level = level;
 		this.chestID = chestID;
@@ -47,11 +49,13 @@ public class Enchantment {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>\n");
 		sb.append("  <td>" + level + "</td>\n");
+		sb.append("  <td>" + nameWidth + "</td>\n");
+		sb.append("  <td>" + namePixels + "</td>\n");
 		sb.append("  <td>" + name + "</td>\n");
 		sb.append(
-			"  <td><img src='" + "captures/Sid-" + row + "x" + column + "-" + id
+			"  <td><img src='" + "captures/number5-" + row + "x" + column + "-"
+				+ id
 				+ ".png'</img>\n");
-//		sb.append("  <td>" + namePixels + "</td>\n");
 		sb.append("  <td>" + row + "</td>\n");
 		sb.append("  <td>" + column + "</td>\n");
 		sb.append("</tr>\n");

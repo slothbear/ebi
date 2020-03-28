@@ -59,21 +59,32 @@ public class Chunker {
 
 			int namePixels = 0;
 			int level = 0;
+			int nameWidth = 0;
 
 			// Call containsKey() first because get() cannot return an
 			// autoboxed Integer/int that is null.
 			if (LEVEL_PIXELS.containsKey(lastPixelCount)) {
 				level = LEVEL_PIXELS.get(lastPixelCount);
 				namePixels = textPixelCount(allButLast(pieces));
+				nameWidth = getTotalWidth(pieces);
 			} else {
 				namePixels = textPixelCount(chunk);
+				nameWidth = chunk.getWidth();
 			}
 
 			result.add(new Enchantment(namePixels, level, chestID, chestRow,
-				chestColumn, chunk));
+				chestColumn, chunk, nameWidth));
 		}
 
 		return result;
+	}
+
+	private static int getTotalWidth(List<BufferedImage> pieces) {
+		int total = 0;
+		for (BufferedImage piece : pieces) {
+			total += piece.getWidth();
+		}
+		return total;
 	}
 
 	private static BufferedImage strip(BufferedImage chunk) {
