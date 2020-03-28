@@ -61,7 +61,7 @@ public class Enchantment {
 		sb.append("  <td>" + chestID + "</td>\n");
 		sb.append("  <td>" + row + "</td>\n");
 		sb.append("  <td>" + column + "</td>\n");
-		sb.append("</tr>\n");
+		sb.append("</tr>\n\n");
 		return sb.toString();
 	}
 

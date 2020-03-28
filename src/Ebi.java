@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,16 @@ public class Ebi {
 
 //		Distiller.distill(enchantments);
 
+		writeHTML(enchantments);
+	}
+
+	private static void writeHTML(List<Enchantment> enchantments)
+		throws IOException {
+		FileWriter writer = new FileWriter("ebi_rows.html", true /* append */);
+		for (Enchantment e : enchantments) {
+			writer.write(e.toHTMLrow());
+		}
+		writer.close();
 	}
 
 	private static void stowImageFile(int row, int column, BufferedImage popup)
@@ -54,8 +65,6 @@ public class Ebi {
 		String enchFile = "popups/" + (row + 1) + "x" + (column + 1) + ".png";
 		ImageIO.write(popup, "png", new File(enchFile));
 	}
-
-
 
 	private static BufferedImage captureInfoPopup(int x, int y,
 		boolean lastColumn) throws InterruptedException, IOException {
