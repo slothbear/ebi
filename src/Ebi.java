@@ -50,7 +50,7 @@ public class Ebi {
 
 	private static void stowImageFile(int row, int column, BufferedImage popup)
 		throws IOException {
-		String enchFile = "captures/" + (row + 1) + "x" + (column + 1) + ".png";
+		String enchFile = "popups/" + (row + 1) + "x" + (column + 1) + ".png";
 		ImageIO.write(popup, "png", new File(enchFile));
 	}
 

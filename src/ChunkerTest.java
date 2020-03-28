@@ -21,7 +21,7 @@ public class ChunkerTest {
 
 // Read a single popup.
 //		String fileName = System.getProperty("user.dir") +
-//			"/captures/" + CHEST_SLOT + ".png";
+//			"/popups/" + CHEST_SLOT + ".png";
 //		popup = ImageIO.read(new File(fileName));
 //		enchantments = Chunker.getEnchantments(popup, "unu", 4, 2);
 //		for (Enchantment e : enchantments) {
@@ -30,7 +30,7 @@ public class ChunkerTest {
 
 // Read all the .png in a folder.
 		File folder = new File(System.getProperty("user.dir") +
-			"/captures/");
+			"/popups/");
 		File[] pngs = folder.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File file) {

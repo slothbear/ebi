@@ -31,17 +31,22 @@ public class Enchantment {
 		this.image = image;
 		this.id = String.valueOf(unique.getAndIncrement());
 
-		ImageIO.write(image, "png",
-			new File(
-				"captures/" + chestID + "-" + row + "x" + column + "-" + id
-					+ ".png"));
+		ImageIO.write(image, "png", new File(chunkFilename()));
+	}
+
+
+	private String chunkFilename() {
+		return "chunks/" +
+			chestID + "-" +
+			row + "x" + column + "-" +
+			id + ".png";
 	}
 
 
 	@Override
 	public String toString() {
 		return "Enchantment [" + name + " "
-			+ level + "  location=" + chestID + "/" + row + "x"
+			+ level + "  location=" + chestID + "-" + row + "x"
 			+ column + "]";
 	}
 
@@ -52,10 +57,7 @@ public class Enchantment {
 		sb.append("  <td>" + nameWidth + "</td>\n");
 		sb.append("  <td>" + namePixels + "</td>\n");
 		sb.append("  <td>" + name + "</td>\n");
-		sb.append(
-			"  <td><img src='" + "captures/number5-" + row + "x" + column + "-"
-				+ id
-				+ ".png'</img>\n");
+		sb.append("  <td><img src='" + chunkFilename() + "'</img></td>\n");
 		sb.append("  <td>" + row + "</td>\n");
 		sb.append("  <td>" + column + "</td>\n");
 		sb.append("</tr>\n");
