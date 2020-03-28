@@ -51,7 +51,7 @@ public class Enchantment {
 		sb.append(
 			"  <td><img src='" + "captures/Sid-" + row + "x" + column + "-" + id
 				+ ".png'</img>\n");
-		sb.append("  <td>" + namePixels + "</td>\n");
+//		sb.append("  <td>" + namePixels + "</td>\n");
 		sb.append("  <td>" + row + "</td>\n");
 		sb.append("  <td>" + column + "</td>\n");
 		sb.append("</tr>\n");
