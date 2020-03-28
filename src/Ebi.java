@@ -45,7 +45,8 @@ public class Ebi {
 		}
 		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
-		Distiller.distill(enchantments);
+//		Distiller.distill(enchantments);
+
 	}
 
 	private static void stowImageFile(int row, int column, BufferedImage popup)
