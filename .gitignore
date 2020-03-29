@@ -2,6 +2,10 @@
 popups
 chunks
 
+# html output
+index.html
+ebi_rows.html
+
 # vim swap
 *.swp
 
