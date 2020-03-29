@@ -66,7 +66,7 @@ public class Chunker {
 			if (LEVEL_PIXELS.containsKey(lastPixelCount)) {
 				level = LEVEL_PIXELS.get(lastPixelCount);
 				namePixels = textPixelCount(allButLast(pieces));
-				nameWidth = getTotalWidth(pieces);
+				nameWidth = getTotalWidth(allButLast(pieces));
 			} else {
 				namePixels = textPixelCount(chunk);
 				nameWidth = chunk.getWidth();
@@ -84,7 +84,7 @@ public class Chunker {
 		for (BufferedImage piece : pieces) {
 			total += piece.getWidth();
 		}
-		return total;
+		return total + (pieces.size() - 1) * WORD_SPACE;
 	}
 
 	private static BufferedImage strip(BufferedImage chunk) {
