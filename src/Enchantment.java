@@ -69,9 +69,8 @@ public class Enchantment {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + level;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + namePixels;
+		result = prime * result + nameWidth;
 		return result;
 	}
 
@@ -87,17 +86,10 @@ public class Enchantment {
 			return false;
 		}
 		Enchantment other = (Enchantment) obj;
-		if (level != other.level) {
-			return false;
-		}
-		if (name == null) {
-			if (other.name != null) {
-				return false;
-			}
-		} else if (!name.equals(other.name)) {
-			return false;
-		}
 		if (namePixels != other.namePixels) {
+			return false;
+		}
+		if (nameWidth != other.nameWidth) {
 			return false;
 		}
 		return true;
