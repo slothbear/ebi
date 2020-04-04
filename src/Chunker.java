@@ -72,8 +72,11 @@ public class Chunker {
 				nameWidth = chunk.getWidth();
 			}
 
+			BufferedImage nameChunk = chunk.getSubimage(0, 0, nameWidth,
+				chunk.getHeight());
+
 			result.add(new Enchantment(namePixels, level, chestID, chestRow,
-				chestColumn, chunk, nameWidth));
+				chestColumn, nameChunk, nameWidth));
 		}
 
 		return result;
