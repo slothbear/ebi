@@ -4,14 +4,16 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -25,11 +27,19 @@ public class Ebi {
 
 		ROBOT = new Robot();
 		List<Enchantment> enchantments = new ArrayList<Enchantment>();
+		new PrintWriter("ebi_rows.html").close();
 
-		String chestID = getChestID();
-		if (chestID.isEmpty()) {
-			return;
+		while (true) {
+			String chestID = getChestID();
+			if (chestID.isEmpty()) {
+				System.exit(4);
+			}
+			scanChest(enchantments, chestID);
 		}
+	}
+
+	private static void scanChest(List<Enchantment> enchantments,
+		String chestID) throws InterruptedException, IOException {
 		TimeUnit.SECONDS.sleep(10); // Wait for human to arrange UI.
 
 		for (int chestRow = 0; chestRow < 6; chestRow++) {
@@ -39,14 +49,18 @@ public class Ebi {
 				BufferedImage popup = captureInfoPopup(bookX, bookY,
 					chestColumn == 8);
 				stowImageFile(chestRow, chestColumn, popup);
+
 				enchantments.addAll(
 					Chunker.getEnchantments(popup, chestID,
 						chestRow, chestColumn));
 			}
 		}
-		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
+//		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
 //		Distiller.distill(enchantments);
+		System.out.println("before: " + enchantments.size());
+		enchantments = removeDuplicates(enchantments);
+		System.out.println("after: " + enchantments.size());
 
 		writeHTML(enchantments);
 	}
@@ -110,5 +124,14 @@ public class Ebi {
 		}
 		return id;
 	}
+
+	public static <T> List<T> removeDuplicates(List<T> list) {
+		Set<T> set = new LinkedHashSet<>();
+		set.addAll(list);
+		list.clear();
+		list.addAll(set);
+		return list;
+	}
+
 
 }
