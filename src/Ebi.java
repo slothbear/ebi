@@ -32,6 +32,7 @@ public class Ebi {
 		while (true) {
 			String chestID = getChestID();
 			if (chestID.isEmpty()) {
+				writeHTML(enchantments);
 				System.exit(4);
 			}
 			scanChest(enchantments, chestID);
@@ -58,11 +59,8 @@ public class Ebi {
 //		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
 //		Distiller.distill(enchantments);
-		System.out.println("before: " + enchantments.size());
 		enchantments = removeDuplicates(enchantments);
-		System.out.println("after: " + enchantments.size());
 
-		writeHTML(enchantments);
 	}
 
 	private static void writeHTML(List<Enchantment> enchantments)
