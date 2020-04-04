@@ -59,8 +59,7 @@ public class Ebi {
 //		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
 //		Distiller.distill(enchantments);
-		enchantments = removeDuplicates(enchantments);
-
+//		removeDuplicates(enchantments);
 	}
 
 	private static void writeHTML(List<Enchantment> enchantments)
