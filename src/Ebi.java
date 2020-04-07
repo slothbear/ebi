@@ -28,6 +28,7 @@ public class Ebi {
 		ROBOT = new Robot();
 		List<Enchantment> enchantments = new ArrayList<Enchantment>();
 		new PrintWriter("ebi_rows.html").close();
+		new PrintWriter("ebi.csv").close();
 
 		while (true) {
 			String chestID = getChestID();
@@ -75,6 +76,8 @@ public class Ebi {
 	private static void writeCSV(List<Enchantment> enchantments)
 		throws IOException {
 		FileWriter writer = new FileWriter("ebi.csv", true /* append */);
+		writer.write(
+			"nameWidth,namePixels,level,name,chestID,row,column,crc\n");
 		for (Enchantment e : enchantments) {
 			writer.write(e.toCSVrow());
 		}
