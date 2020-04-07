@@ -33,6 +33,7 @@ public class Ebi {
 			String chestID = getChestID();
 			if (chestID.isEmpty()) {
 				writeHTML(enchantments);
+				writeCSV(enchantments);
 				System.exit(4);
 			}
 			scanChest(enchantments, chestID);
@@ -67,6 +68,15 @@ public class Ebi {
 		FileWriter writer = new FileWriter("ebi_rows.html", true /* append */);
 		for (Enchantment e : enchantments) {
 			writer.write(e.toHTMLrow());
+		}
+		writer.close();
+	}
+
+	private static void writeCSV(List<Enchantment> enchantments)
+		throws IOException {
+		FileWriter writer = new FileWriter("ebi.csv", true /* append */);
+		for (Enchantment e : enchantments) {
+			writer.write(e.toCSVrow());
 		}
 		writer.close();
 	}

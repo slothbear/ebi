@@ -65,6 +65,29 @@ public class Enchantment {
 		return sb.toString();
 	}
 
+	public String toCSVrow() {
+		StringBuilder sb = new StringBuilder();
+		String crc = chestID + "-" + (row + 1) + "x" + (column + 1);
+
+		sb.append(nameWidth);
+		sb.append(",");
+		sb.append(namePixels);
+		sb.append(",");
+		sb.append(level);
+		sb.append(",");
+		sb.append(name);
+		sb.append(",");
+		sb.append(chestID);
+		sb.append(",");
+		sb.append(row + 1);
+		sb.append(",");
+		sb.append(column + 1);
+		sb.append(",");
+		sb.append(crc);
+		sb.append("\n");
+		return sb.toString();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
