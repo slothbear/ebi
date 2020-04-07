@@ -37,6 +37,7 @@ public class Chunker {
 	private static final int GRAY_LEVEL = PICKAXE_GRAY_LEVEL;
 	private static final int TEXT_COLOR = new Color(
 		GRAY_LEVEL, GRAY_LEVEL, GRAY_LEVEL).getRGB();
+//	private static AtomicInteger unique = new AtomicInteger();
 
 	public static List<Enchantment> getEnchantments(
 		BufferedImage popup, String chestID, int chestRow, int chestColumn)
@@ -47,6 +48,8 @@ public class Chunker {
 		for (int chunkLine = 0; chunkLine < MAX_ENCHANTMENTS; chunkLine++) {
 			BufferedImage chunk = popup.getSubimage(0,
 				CHUNK_HEIGHT * chunkLine, CHUNK_WIDTH, CHUNK_HEIGHT);
+//			ImageIO.write(chunk, "png", new File("chunks/unf-"
+//				+ String.valueOf(unique.getAndIncrement()) + ".png"));
 			int chunkPixelCount = textPixelCount(chunk);
 			if (chunkPixelCount < MIN_TEXT_PIXELS) {
 				continue; // no enchantment, on to next chunk
