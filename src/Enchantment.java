@@ -59,8 +59,10 @@ public class Enchantment {
 		sb.append("  <td>" + level + "</td>\n");
 		sb.append("  <td>" + name + "</td>\n");
 		sb.append("  <td>" + chestID + "</td>\n");
-		sb.append("  <td>" + row + "</td>\n");
-		sb.append("  <td>" + column + "</td>\n");
+		sb.append("  <td>" + (row + 1) + "</td>\n");
+		sb.append("  <td>" + (column + 1) + "</td>\n");
+		String crc = chestID + "-" + (row + 1) + "x" + (column + 1);
+		sb.append("  <td>" + crc + "</td>\n");
 		sb.append("</tr>\n\n");
 		return sb.toString();
 	}
