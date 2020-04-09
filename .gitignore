@@ -2,9 +2,10 @@
 popups
 chunks
 
-# html output
+# output
 index.html
 ebi_rows.html
+ebi.csv
 
 # vim swap
 *.swp
