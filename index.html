@@ -16,7 +16,20 @@
     src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
   <script>
     $(document).ready( function () {
-	    $('#enchantments').DataTable({paging: false});
+	    var table = $('#enchantments').DataTable({paging: false});
+	    
+	    $('#enchantments tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+            table.search("").draw();
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+             $(this).addClass('selected');
+             var crc = table.row( this ).data()[8]
+            table.search(crc).draw();
+        }
+    } );
     } );
   </script>
 
@@ -43,8 +56,6 @@
 
 
 <!-- insert rows below -->
-
-
 
 <!-- insert rows above -->
 
