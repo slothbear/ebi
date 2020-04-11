@@ -21,18 +21,18 @@ public class Disenchant {
 		}
 	}
 
+	private static void disenchant(int x, int y) {
+		click(x, y); 		// inventory slot
+		click(610, 252); 	// input, top slot
+		click(894, 306); 	// output
+		click(x, y); 		// put back in inventory
+	}
+
 	private static void click(int x, int y) {
 		ROBOT.mouseMove(x, y);
 		ROBOT.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 		ROBOT.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 	}
 
-	private static void disenchant(int x, int y) {
-		click(x, y); 		// inventory slot
-		click(610, 252); 	// input, top slot
-		click(894, 306); 	// output
-		click(x, y); 		// put back in inventory
-
-	}
 
 }
