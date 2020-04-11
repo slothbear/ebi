@@ -7,14 +7,19 @@ import javax.imageio.ImageIO;
 
 public class Enchantment {
 	String name = "";
-	int namePixels = 0;
 	int level = 0;
+
 	String chestID = "";
 	int row = 0;
 	int column = 0;
+
 	BufferedImage image;
 	String id = "";
-	int nameWidth = 0;
+
+	int minNameWidth = 0;
+	int maxNameWidth = 0;
+	int minNamePixels = 0;
+	int maxNamePixels = 0;
 
 	private static AtomicInteger unique = new AtomicInteger();
 
@@ -22,8 +27,10 @@ public class Enchantment {
 		String chestID, int row, int column, BufferedImage image, int nameWidth)
 		throws IOException {
 
-		this.nameWidth = nameWidth;
-		this.namePixels = namePixels;
+		this.minNameWidth = nameWidth;
+		this.maxNameWidth = nameWidth;
+		this.minNamePixels = namePixels;
+		this.maxNamePixels = namePixels;
 		this.level = level;
 		this.chestID = chestID;
 		this.row = row;
@@ -53,8 +60,8 @@ public class Enchantment {
 	public String toHTMLrow() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>\n");
-		sb.append("  <td>" + nameWidth + "</td>\n");
-		sb.append("  <td>" + namePixels + "</td>\n");
+		sb.append("  <td>" + minNameWidth + "</td>\n");
+		sb.append("  <td>" + minNamePixels + "</td>\n");
 		sb.append("  <td><img src='" + chunkFilename() + "'</img></td>\n");
 		sb.append("  <td>" + level + "</td>\n");
 		sb.append("  <td>" + name + "</td>\n");
@@ -71,9 +78,9 @@ public class Enchantment {
 		StringBuilder sb = new StringBuilder();
 		String crc = chestID + "-" + (row + 1) + "x" + (column + 1);
 
-		sb.append(nameWidth);
+		sb.append(minNameWidth);
 		sb.append(",");
-		sb.append(namePixels);
+		sb.append(minNamePixels);
 		sb.append(",");
 		sb.append(level);
 		sb.append(",");
@@ -94,8 +101,10 @@ public class Enchantment {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + namePixels;
-		result = prime * result + nameWidth;
+		result = prime * result + maxNamePixels;
+		result = prime * result + maxNameWidth;
+		result = prime * result + minNamePixels;
+		result = prime * result + minNameWidth;
 		return result;
 	}
 
@@ -111,10 +120,16 @@ public class Enchantment {
 			return false;
 		}
 		Enchantment other = (Enchantment) obj;
-		if (namePixels != other.namePixels) {
+		if (maxNamePixels != other.maxNamePixels) {
 			return false;
 		}
-		if (nameWidth != other.nameWidth) {
+		if (maxNameWidth != other.maxNameWidth) {
+			return false;
+		}
+		if (minNamePixels != other.minNamePixels) {
+			return false;
+		}
+		if (minNameWidth != other.minNameWidth) {
 			return false;
 		}
 		return true;
