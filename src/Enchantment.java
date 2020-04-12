@@ -182,20 +182,22 @@ public class Enchantment {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Enchantment other = (Enchantment) obj;
-		if (maxNamePixels != other.maxNamePixels) {
-			return false;
+
+		if (hasOverlap(this, (Enchantment) obj)) {
+			return true;
 		}
-		if (maxNameWidth != other.maxNameWidth) {
-			return false;
-		}
-		if (minNamePixels != other.minNamePixels) {
-			return false;
-		}
-		if (minNameWidth != other.minNameWidth) {
-			return false;
-		}
-		return true;
+
+		return false;
+	}
+
+	private static boolean hasOverlap(Enchantment e1, Enchantment e2) {
+		boolean widthOverlaps = !(e1.maxNameWidth < e2.minNameWidth)
+			&& !(e1.minNameWidth > e2.maxNameWidth);
+
+		boolean pixelOverlaps = !(e1.maxNamePixels < e2.minNamePixels)
+			&& !(e1.minNamePixels > e2.maxNamePixels);
+
+		return widthOverlaps && pixelOverlaps;
 	}
 
 	public static void dump(List<Enchantment> enchantments) {
