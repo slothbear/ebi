@@ -16,9 +16,9 @@ public class Enchantment {
 	BufferedImage image;
 	String id = "";
 
-	int minNameWidth = 0;
+	int minNameWidth = Integer.MAX_VALUE;
 	int maxNameWidth = 0;
-	int minNamePixels = 0;
+	int minNamePixels = Integer.MAX_VALUE;
 	int maxNamePixels = 0;
 
 	private static AtomicInteger unique = new AtomicInteger();
