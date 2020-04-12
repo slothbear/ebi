@@ -23,8 +23,11 @@ public class Enchantment {
 
 	private static AtomicInteger unique = new AtomicInteger();
 
+	// Enchantments created with just a name are called Spells.
+	// They contain different values for min/max width and pixels.
 	public Enchantment(String name) {
 		this.name = name;
+		this.chestID = "spell";
 	}
 
 	public Enchantment(String name, int level,
