@@ -16,16 +16,7 @@ public class Distiller {
 
 	private static Enchantment[] spellVault = new Enchantment[] {
 		// @formatter:off (so each enchantment stays on one line)
-		new Enchantment("Punch", 0, "", 0, 0, null, 101, 101, 636, 648),
-		new Enchantment("Mending", 0, "", 0, 0, null, 129, 129, 969, 969),
-		new Enchantment("Respiration", 0, "", 0, 0, null, 192, 192, 1293, 1293),
-		new Enchantment("Punch", 0, "", 0, 0, null, 101, 101, 636, 648),
-		new Enchantment("Loyalty", 0, "", 0, 0, null, 125, 126, 843, 846),
 		new Enchantment("Channeling", 0, "", 0, 0, null, 181, 181, 1248, 1248),
-		new Enchantment("Flame", 0, "", 0, 0, null, 90, 90, 624, 624),
-		new Enchantment("Power", 0, "", 0, 0, null, 101, 101, 654, 654),
-		new Enchantment("Sharpness", 0, "", 0, 0, null, 185, 185, 1200, 1200),
-		new Enchantment("Loyalty", 0, "", 0, 0, null, 125, 126, 843, 846)
 		// @formatter:on
 	};
 	private static List<Enchantment> spellChest = Arrays.asList(spellVault);
