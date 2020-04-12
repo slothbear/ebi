@@ -70,14 +70,6 @@ public class Enchantment {
 			id + ".png";
 	}
 
-
-	@Override
-	public String toString() {
-		return "Enchantment [" + name + " "
-			+ level + "  location=" + chestID + "-" + row + "x"
-			+ column + "]";
-	}
-
 	public String toHTMLrow() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<tr>\n");
@@ -94,6 +86,56 @@ public class Enchantment {
 		sb.append("</tr>\n\n");
 		return sb.toString();
 	}
+
+	@Override
+	public String toString() {
+		StringBuffer width = new StringBuffer();
+		width.append(minNameWidth);
+		if (minNameWidth != maxNameWidth) {
+			width.append("-");
+			width.append(maxNameWidth);
+		}
+		StringBuffer pixels = new StringBuffer();
+		pixels.append(minNamePixels);
+		if (minNamePixels != maxNamePixels) {
+			pixels.append("-");
+			pixels.append(maxNamePixels);
+		}
+		StringBuffer chest = new StringBuffer();
+		if (chestID == "" || chestID == "spell") {
+			chest.append("spell");
+		} else {
+			chest.append(chestID + "-" + row + "x" + column);
+		}
+
+		String romanLevel = "";
+		switch (level) {
+		case 1:
+			romanLevel = "I";
+			break;
+		case 2:
+			romanLevel = "II";
+			break;
+		case 3:
+			romanLevel = "III";
+			break;
+		case 4:
+			romanLevel = "IV";
+			break;
+		case 5:
+			romanLevel = "V";
+			break;
+		}
+
+		return name + " " + romanLevel + ": " +
+			chest +
+			" [" +
+			width + ", " + pixels +
+			"] " +
+			"ID" + id +
+			"\n";
+	}
+
 
 	public String toCSVrow() {
 		StringBuilder sb = new StringBuilder();
