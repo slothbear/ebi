@@ -79,10 +79,27 @@ public class Distiller {
 		setDialogOptions();
 
 		for (Enchantment enchantment : enchantments) {
+			int index = spells.indexOf(enchantment);
 
-
+			if (index != -1) { // found existing spell for this enchantment
+				Enchantment spell = spells.get(index);
+				enchantment.name = spell.name;
+			} else {  // no spell found
+				enchantment.name = promptForName(enchantment);
+				Enchantment spell = getSpell(enchantment.name);
+				spell.merge(enchantment);
+				spells.add(spell);
 			}
 		}
+	}
+
+	private static Enchantment getSpell(String name) {
+		for (Enchantment spell : spells) {
+			if (spell.name.equals(name)) {
+				return spell;
+			}
+		}
+		return new Enchantment(name);
 	}
 
 	private static String promptForName(Enchantment enchantment) {
