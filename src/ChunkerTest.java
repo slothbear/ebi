@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,8 +49,12 @@ public class ChunkerTest {
 					row, column));
 		}
 		Distiller.distill(enchantments);
-		Enchantment.dump(enchantments);
+
+		System.out.println("enchantments:");
+		System.out.println(Arrays.toString(enchantments.toArray()));
 		System.out.println("spells:");
+		System.out.println(Arrays.toString(Distiller.spells.toArray()));
+
 		Enchantment.dump(Distiller.spells);
 
 		System.out.println(enchantments.size() + " enchantments");
