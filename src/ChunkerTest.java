@@ -48,12 +48,12 @@ public class ChunkerTest {
 					row, column));
 		}
 		Distiller.distill(enchantments);
+		Enchantment.dump(enchantments);
+		System.out.println("spells:");
+		Enchantment.dump(Distiller.spells);
 
-		List<Enchantment> dedup = removeDuplicates(enchantments);
-
-		for (Enchantment e : dedup) {
-			System.out.println(e.toHTMLrow());
-		}
+		System.out.println(enchantments.size() + " enchantments");
+		System.out.println(Distiller.spells.size() + " spells");
 	}
 
 	public static <T> List<T> removeDuplicates(List<T> list) {

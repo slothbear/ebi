@@ -140,4 +140,22 @@ public class Enchantment {
 		return true;
 	}
 
+	public static void dump(List<Enchantment> enchantments) {
+		System.out.println("<---");
+		for (Enchantment enchantment : enchantments) {
+			System.out.println(
+				"new Enchantment(" +
+					"\"" + enchantment.name + "\", " +
+					enchantment.level + ", " +
+					"\"" + enchantment.chestID + "\", " +
+					enchantment.row + ", " +
+					enchantment.column + ", null, " +
+					enchantment.minNameWidth + ", " +
+					enchantment.maxNameWidth + ", " +
+					enchantment.minNamePixels + ", " +
+					enchantment.maxNamePixels +
+					"),");
+		}
+		System.out.println("--->");
+	}
 }
