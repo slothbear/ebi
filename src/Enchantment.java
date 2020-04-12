@@ -39,9 +39,9 @@ public class Enchantment {
 
 		this.name = name;
 		this.minNameWidth = minNameWidth;
-		this.minNameWidth = minNameWidth;
-		this.minNameWidth = minNameWidth;
-		this.minNameWidth = minNameWidth;
+		this.maxNameWidth = maxNameWidth;
+		this.minNamePixels = minNamePixels;
+		this.maxNamePixels = maxNamePixels;
 		this.level = level;
 		this.chestID = chestID;
 		this.row = row;
