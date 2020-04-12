@@ -56,7 +56,7 @@ public class Enchantment {
 		BufferedImage image,
 		int nameWidth, int namePixels) throws IOException {
 
-		this(name, level, chestID, row, column, null,
+		this(name, level, chestID, row, column, image,
 			nameWidth, nameWidth, namePixels, namePixels);
 
 		ImageIO.write(image, "png", new File(chunkFilename()));
