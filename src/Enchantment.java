@@ -62,6 +62,19 @@ public class Enchantment {
 		ImageIO.write(image, "png", new File(chunkFilename()));
 	}
 
+	public void merge(Enchantment enchantment) {
+		this.minNameWidth = Math.min(
+			this.minNameWidth, enchantment.minNameWidth);
+		this.maxNameWidth = Math.max(
+			this.maxNameWidth, enchantment.maxNameWidth);
+
+		this.minNamePixels = Math.min(
+			this.minNamePixels, enchantment.minNamePixels);
+		this.maxNamePixels = Math.max(
+			this.maxNamePixels, enchantment.maxNamePixels);
+	}
+
+
 
 	private String chunkFilename() {
 		return "chunks/" +
