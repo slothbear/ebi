@@ -31,12 +31,20 @@ public class Ebi {
 		while (true) {
 			String chestID = getChestID();
 			if (chestID.isEmpty()) {
-				writeHTML(enchantments);
-				writeCSV(enchantments);
-				System.exit(4);
+				break;
 			}
 			scanChest(enchantments, chestID);
 		}
+
+		Distiller.distill(enchantments);
+
+		Enchantment.dump(Distiller.spells);
+
+		System.out.println(enchantments.size() + " enchantments");
+		System.out.println(Distiller.spells.size() + " spells");
+
+		writeHTML(enchantments);
+		writeCSV(enchantments);
 	}
 
 	private static void scanChest(List<Enchantment> enchantments,
@@ -56,9 +64,6 @@ public class Ebi {
 						chestRow, chestColumn));
 			}
 		}
-//		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
-
-//		Distiller.distill(enchantments);
 	}
 
 	private static void writeHTML(List<Enchantment> enchantments)
