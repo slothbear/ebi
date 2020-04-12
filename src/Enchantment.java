@@ -23,9 +23,14 @@ public class Enchantment {
 
 	private static AtomicInteger unique = new AtomicInteger();
 
-	public Enchantment(int namePixels, int level,
-		String chestID, int row, int column, BufferedImage image, int nameWidth)
-		throws IOException {
+	public Enchantment(String name) {
+		this.name = name;
+	}
+
+	public Enchantment(String name, int level,
+		String chestID, int row, int column,
+		BufferedImage image,
+		int nameWidth, int namePixels) {
 
 		this.minNameWidth = nameWidth;
 		this.maxNameWidth = nameWidth;
