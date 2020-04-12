@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.imageio.ImageIO;
@@ -33,18 +34,30 @@ public class Enchantment {
 	public Enchantment(String name, int level,
 		String chestID, int row, int column,
 		BufferedImage image,
-		int nameWidth, int namePixels) {
+		int minNameWidth, int maxNameWidth,
+		int minNamePixels, int maxNamePixels) {
 
-		this.minNameWidth = nameWidth;
-		this.maxNameWidth = nameWidth;
-		this.minNamePixels = namePixels;
-		this.maxNamePixels = namePixels;
+		this.name = name;
+		this.minNameWidth = minNameWidth;
+		this.minNameWidth = minNameWidth;
+		this.minNameWidth = minNameWidth;
+		this.minNameWidth = minNameWidth;
 		this.level = level;
 		this.chestID = chestID;
 		this.row = row;
 		this.column = column;
 		this.image = image;
 		this.id = String.valueOf(unique.getAndIncrement());
+	}
+
+
+	public Enchantment(String name, int level,
+		String chestID, int row, int column,
+		BufferedImage image,
+		int nameWidth, int namePixels) throws IOException {
+
+		this(name, level, chestID, row, column, null,
+			nameWidth, nameWidth, namePixels, namePixels);
 
 		ImageIO.write(image, "png", new File(chunkFilename()));
 	}
