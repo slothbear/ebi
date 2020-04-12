@@ -11,9 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -61,7 +59,6 @@ public class Ebi {
 //		ROBOT.keyPress(KeyEvent.VK_ESCAPE);
 
 //		Distiller.distill(enchantments);
-//		removeDuplicates(enchantments);
 	}
 
 	private static void writeHTML(List<Enchantment> enchantments)
@@ -134,14 +131,4 @@ public class Ebi {
 		}
 		return id;
 	}
-
-	public static <T> List<T> removeDuplicates(List<T> list) {
-		Set<T> set = new LinkedHashSet<>();
-		set.addAll(list);
-		list.clear();
-		list.addAll(set);
-		return list;
-	}
-
-
 }
