@@ -79,7 +79,6 @@ public class Distiller {
 				enchantment.name = promptForName(enchantment);
 				Enchantment spell = getSpell(enchantment.name);
 				spell.merge(enchantment);
-				spells.add(spell);
 			}
 		}
 	}
@@ -90,7 +89,9 @@ public class Distiller {
 				return spell;
 			}
 		}
-		return new Enchantment(name);
+		Enchantment newSpell = new Enchantment(name);
+		spells.add(newSpell);
+		return newSpell;
 	}
 
 	private static String promptForName(Enchantment enchantment) {
