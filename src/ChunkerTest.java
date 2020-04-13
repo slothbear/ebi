@@ -17,16 +17,8 @@ public class ChunkerTest {
 		BufferedImage popup;
 		List<Enchantment> enchantments = new ArrayList<Enchantment>();
 
-// Read a single popup.
-//		String fileName = System.getProperty("user.dir") +
-//			"/popups/" + CHEST_SLOT + ".png";
-//		popup = ImageIO.read(new File(fileName));
-//		enchantments = Chunker.getEnchantments(popup, "unu", 4, 2);
-//		for (Enchantment e : enchantments) {
-//			System.out.println(e);
-//		}
+		// Read all the .png in a folder.
 
-// Read all the .png in a folder.
 		File folder = new File(System.getProperty("user.dir") +
 			"/popups/");
 		File[] pngs = folder.listFiles(new FileFilter() {
