@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,11 @@ public class Ebi {
 		}
 
 		Distiller.distill(enchantments);
+
+		System.out.println("enchantments:");
+		System.out.println(Arrays.toString(enchantments.toArray()));
+		System.out.println("spells:");
+		System.out.println(Arrays.toString(Distiller.spells.toArray()));
 
 		Enchantment.dump(Distiller.spells);
 
