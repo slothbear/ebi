@@ -4,9 +4,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 
@@ -51,14 +49,6 @@ public class ChunkerTest {
 
 		System.out.println(enchantments.size() + " enchantments");
 		System.out.println(Distiller.spells.size() + " spells");
-	}
-
-	public static <T> List<T> removeDuplicates(List<T> list) {
-		Set<T> set = new LinkedHashSet<>();
-		set.addAll(list);
-		list.clear();
-		list.addAll(set);
-		return list;
 	}
 
 }
